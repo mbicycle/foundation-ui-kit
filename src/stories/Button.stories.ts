@@ -1,22 +1,73 @@
-import { Button } from "./../components/button/index";
-import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from './../components/button/index';
+import type { Meta, StoryObj } from '@storybook/react';
 
-const meta = {
-  title: "Example/Button",
+const meta: Meta = {
+  title: 'Example/Button',
   component: Button,
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ["autodocs"],
-  parameters: {
-    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-    layout: "fullscreen",
+  argTypes: {
+    children: {
+      control: 'text',
+    },
+    size: {
+      control: { type: 'select', options: ['small', 'medium', 'large'] },
+    },
+    isDisabled: {
+      control: 'boolean',
+    },
+    uppercase: {
+      control: {
+        type: 'boolean',
+        defaultValue: false,
+      },
+    },
   },
-} satisfies Meta<typeof Button>;
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+  },
+};
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    children: "Press me",
+    children: 'Press me',
+  },
+};
+
+export const DisabledButton: Story = {
+  args: {
+    children: 'Disabled',
+    isDisabled: true,
+  },
+};
+
+export const SmallButton: Story = {
+  args: {
+    children: 'Small',
+    size: 'small',
+  },
+};
+
+export const MediumButton: Story = {
+  args: {
+    children: 'Medium',
+    size: 'medium',
+  },
+};
+
+export const LargeButton: Story = {
+  args: {
+    children: 'Large',
+    size: 'large',
+  },
+};
+
+export const UppercaseButton: Story = {
+  args: {
+    children: 'Uppercase Text',
+    uppercase: true,
   },
 };
