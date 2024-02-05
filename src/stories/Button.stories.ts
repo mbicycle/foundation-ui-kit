@@ -9,7 +9,10 @@ const meta: Meta = {
       control: 'text',
     },
     variant: {
-      control:  { type: 'inline-radio', options:  ['primary', 'warning', 'transparent', 'empty'] },
+      options: ['primary', 'warning', 'transparent', 'empty'],
+      control: {
+        type: 'select',
+      },
     },
     size: {
       control: { type: 'inline-radio', options: ['small', 'medium', 'large'] },
