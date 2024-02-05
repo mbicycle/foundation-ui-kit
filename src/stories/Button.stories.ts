@@ -1,4 +1,4 @@
-import { Button } from './../components/button/index';
+import { Button } from '../components/button';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
@@ -8,8 +8,11 @@ const meta: Meta = {
     children: {
       control: 'text',
     },
+    variant: {
+      control:  { type: 'inline-radio', options:  ['primary', 'warning', 'transparent', 'empty'] },
+    },
     size: {
-      control: { type: 'select', options: ['small', 'medium', 'large'] },
+      control: { type: 'inline-radio', options: ['small', 'medium', 'large'] },
     },
     isDisabled: {
       control: 'boolean',
@@ -21,10 +24,15 @@ const meta: Meta = {
       },
     },
   },
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'fullscreen',
+  args: {
+    children: 'Press me',
   },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -35,12 +43,22 @@ export const Standard: Story = {
   args: {
     children: 'Press me',
   },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
 };
 
 export const DisabledButton: Story = {
   args: {
     children: 'Disabled',
     isDisabled: true,
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
   },
 };
 
@@ -49,12 +67,22 @@ export const SmallButton: Story = {
     children: 'Small',
     size: 'small',
   },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
 };
 
 export const MediumButton: Story = {
   args: {
     children: 'Medium',
     size: 'medium',
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
   },
 };
 
@@ -63,11 +91,69 @@ export const LargeButton: Story = {
     children: 'Large',
     size: 'large',
   },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
 };
 
 export const UppercaseButton: Story = {
   args: {
     children: 'Uppercase Text',
     uppercase: true,
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
+};
+
+export const PrimaryButton: Story = {
+  args: {
+    children: 'Primary',
+    variant: 'primary',
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
+};
+
+export const WarningButton: Story = {
+  args: {
+    children: 'Warning',
+    variant: 'warning',
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
+};
+
+export const TransparentButton: Story = {
+  args: {
+    children: 'Transparent',
+    variant: 'transparent',
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
+};
+
+export const EmptyButton: Story = {
+  args: {
+    children: 'Empty',
+    variant: 'empty',
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
   },
 };
