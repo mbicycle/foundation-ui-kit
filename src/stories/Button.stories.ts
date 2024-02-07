@@ -9,7 +9,7 @@ const meta: Meta = {
       control: 'text',
     },
     variant: {
-      options: ['primary', 'warning', 'transparent', 'empty'],
+      options: ['primary', 'warning', 'transparent', 'empty', 'outline'],
       control: {
         type: 'select',
       },
@@ -25,6 +25,12 @@ const meta: Meta = {
         type: 'boolean',
         defaultValue: false,
       },
+    },
+    isExport: {
+      control: 'boolean',
+    },
+    isAdd: {
+      control: 'boolean',
     },
   },
   args: {
@@ -153,6 +159,43 @@ export const EmptyButton: Story = {
   args: {
     children: 'Empty',
     variant: 'empty',
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
+};
+
+export const OutlineButton: Story = {
+  args: {
+    children: 'Outline',
+    variant: 'outline',
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
+};
+
+
+export const ExportButton: Story = {
+  args: {
+    children: 'Export',
+    isExport: true,
+  },
+  parameters: {
+    style: {
+      margin: '30px',
+    },
+  },
+};
+
+export const AddButton: Story = {
+  args: {
+    children: 'Add',
+    isAdd: true,
   },
   parameters: {
     style: {
