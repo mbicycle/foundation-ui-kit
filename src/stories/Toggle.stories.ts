@@ -11,6 +11,9 @@ const meta: Meta = {
                 type: 'inline-radio',
             },
         },
+        text: {
+            control: 'text',
+        },
     },
     tags: ['autodocs'],
 };
@@ -19,21 +22,29 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {
+    args: {
+        text: 'Toggle',
+    },
+};
+
 export const Blue: Story = {
     args: {
+        text: 'Blue',
         color: 'blue',
     },
 };
 
 export const Red: Story = {
     args: {
+        text: 'Red',
         color: 'red',
     },
 };
 
 export const Yellow: Story = {
     args: {
+        text: 'Yellow',
         color: 'yellow',
     },
 };
-
