@@ -12,7 +12,7 @@ const meta: Meta = {
             },
         },
     },
-    tags: ['pagination', 'component', 'autodocs'],
+    tags: ['autodocs'],
 };
 
 export default meta;
