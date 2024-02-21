@@ -17,6 +17,9 @@ const meta: Meta = {
         showDeleteIcon: {
             control: 'boolean',
         },
+        isSkills: {
+            control: 'boolean',
+        },
     },
     tags: ['autodocs'],
 };
@@ -31,40 +34,16 @@ export const Default: Story = {
         subtitle: 'Default Subtitle',
         showMoveIcon: true,
         showDeleteIcon: true,
+        isSkills: false,
     },
 };
 
-export const WithoutSubtitle: Story = {
+export const WithSkills: Story = {
     args: {
-        title: 'Title Without Subtitle',
+        title: 'Skills Card',
+        subtitle: 'Subtitle for Skills Card',
         showMoveIcon: true,
         showDeleteIcon: true,
-    },
-};
-
-export const WithoutIcon: Story = {
-    args: {
-        title: 'Title Without Icon',
-        subtitle: 'Subtitle Without Icon',
-        showMoveIcon: false,
-        showDeleteIcon: false,
-    },
-};
-
-export const WithoutMoveIcon: Story = {
-    args: {
-        title: 'Title Without Move Icon',
-        subtitle: 'Subtitle Without Move Icon',
-        showMoveIcon: false,
-        showDeleteIcon: true,
-    },
-};
-
-export const WithoutDeleteIcon: Story = {
-    args: {
-        title: 'Title Without Delete Icon',
-        subtitle: 'Subtitle Without Delete Icon',
-        showMoveIcon: true,
-        showDeleteIcon: false,
+        isSkills: true,
     },
 };
