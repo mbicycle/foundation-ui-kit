@@ -31,7 +31,7 @@ export const Button = (props: Props) => {
   return (
       <button className={buttonClasses} disabled={isDisabled} {...rest}>
         {IconComponent && (
-            <IconComponent className="h-4 w-4 text-white" />
+            <IconComponent />
           )}
         {buttonText}
       </button>

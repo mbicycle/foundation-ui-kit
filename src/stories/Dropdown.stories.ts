@@ -1,9 +1,9 @@
-import DropdownInput from '../components/Dropdown';
+import Dropdown from '../components/Dropdown';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
     title: 'Example/DropdownInput',
-    component: DropdownInput,
+    component: Dropdown,
     parameters: {
         controls: { hideNoControlsWarning: true },
     },

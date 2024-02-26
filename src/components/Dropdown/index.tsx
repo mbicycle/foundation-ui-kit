@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { ChevronUpIcon, ChevronDownIcon } from './icon';
 
-interface DropdownInputProps {
+interface DropdownProps {
     options: string[];
     placeholder?: string;
 }
 
-const DropdownInput: React.FC<DropdownInputProps> = ({ options, placeholder }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, placeholder }) => {
     const [selectedOption, setSelectedOption] = useState('');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -56,4 +56,4 @@ const DropdownInput: React.FC<DropdownInputProps> = ({ options, placeholder }) =
     );
 };
 
-export default DropdownInput;
+export default Dropdown;
