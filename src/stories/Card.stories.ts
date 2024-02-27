@@ -1,27 +1,27 @@
-import { Card } from '../components/Card';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Card } from 'components/Card';
 
 const meta: Meta = {
-    title: 'Example/Card',
-    component: Card,
-    argTypes: {
-        title: {
-            control: 'text',
-        },
-        subtitle: {
-            control: 'text',
-        },
-        showMoveIcon: {
-            control: 'boolean',
-        },
-        showDeleteIcon: {
-            control: 'boolean',
-        },
-        isSkills: {
-            control: 'boolean',
-        },
+  title: 'Example/Card',
+  component: Card,
+  argTypes: {
+    title: {
+      control: 'text',
     },
-    tags: ['autodocs'],
+    subtitle: {
+      control: 'text',
+    },
+    showMoveIcon: {
+      control: 'boolean',
+    },
+    showDeleteIcon: {
+      control: 'boolean',
+    },
+    isSkills: {
+      control: 'boolean',
+    },
+  },
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -29,21 +29,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    args: {
-        title: 'Default Title',
-        subtitle: 'Default Subtitle',
-        showMoveIcon: true,
-        showDeleteIcon: true,
-        isSkills: false,
-    },
+  args: {
+    title: 'Default Title',
+    subtitle: 'Default Subtitle',
+    showMoveIcon: true,
+    showDeleteIcon: true,
+    isSkills: false,
+  },
 };
 
 export const WithSkills: Story = {
-    args: {
-        title: 'Skills Card',
-        subtitle: 'Subtitle for Skills Card',
-        showMoveIcon: true,
-        showDeleteIcon: true,
-        isSkills: true,
-    },
+  args: {
+    title: 'Skills Card',
+    subtitle: 'Subtitle for Skills Card',
+    showMoveIcon: true,
+    showDeleteIcon: true,
+    isSkills: true,
+  },
 };

@@ -1,5 +1,5 @@
-import { Button } from '../components/Button';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from 'components/Button';
 
 const meta: Meta = {
   title: 'Example/Button',
@@ -178,7 +178,6 @@ export const OutlineButton: Story = {
     },
   },
 };
-
 
 export const ExportButton: Story = {
   args: {

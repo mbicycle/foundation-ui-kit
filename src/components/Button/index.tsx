@@ -1,5 +1,6 @@
-import { ButtonHTMLAttributes } from 'react';
-import { ExportIcon, AddIcon } from './icon';
+import type { ButtonHTMLAttributes } from 'react';
+
+import { AddIcon, ExportIcon } from './icon';
 
 type Props = {
   children: React.ReactNode;
@@ -11,8 +12,10 @@ type Props = {
   isAdd?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = (props: Props) => {
-  const { variant = 'primary', isDisabled, isExport, isAdd, ...rest } = props;
+export function Button(props: Props) {
+  const {
+    variant = 'primary', isDisabled, isExport, isAdd, ...rest
+  } = props;
 
   const buttonClasses = `
     px-4 py-2 rounded-md flex items-center justify-center transition-all duration-300 
@@ -23,20 +26,20 @@ export const Button = (props: Props) => {
   `;
 
   const buttonText = props.uppercase
-      ? String(props.children).toUpperCase()
-      : props.children;
+    ? String(props.children).toUpperCase()
+    : props.children;
 
   const IconComponent = isExport ? ExportIcon : (isAdd ? AddIcon : null);
 
   return (
-      <button className={buttonClasses} disabled={isDisabled} {...rest}>
-        {IconComponent && (
-            <IconComponent />
-          )}
-        {buttonText}
-      </button>
+    <button className={buttonClasses} disabled={isDisabled} {...rest}>
+      {IconComponent && (
+        <IconComponent />
+      )}
+      {buttonText}
+    </button>
   );
-};
+}
 
 const getSizeClasses = (size?: 'small' | 'medium' | 'large') => {
   switch (size) {
