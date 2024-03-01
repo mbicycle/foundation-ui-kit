@@ -1,6 +1,6 @@
 const { render } = require('@testing-library/react');
 const React = require('react');
-const Link = require('../components/Link').default; // Импортируем компонент Link
+const Link = require('../components/Link').default;
 
 describe('Link component', () => {
     it('renders a link with correct attributes', () => {
