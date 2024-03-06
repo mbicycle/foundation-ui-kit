@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from './icon';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 type CardProps = {
     title: React.ReactNode;
@@ -47,22 +48,22 @@ export const Card: React.FC<CardProps> = ({
           </div>
         </div>
         {showDeleteIcon && (
-          <div className="flex items-center">
-            <div
-              className="mr-3 flex-shrink-0 w-6 transition-all duration-300 transform hover:grayscale cursor-pointer"
-            >
-              <img src="src/common/icons/Garbage.svg" alt="Delete Icon" className="w-full h-auto" />
-            </div>
-            {isSkills && (
+            <div className="flex items-center">
               <div
-                className="flex-shrink-0 w-6 transition-all duration-300 transform hover:grayscale cursor-pointer"
-                style={{ marginTop: '5px' }}
-                onClick={stopPropagationDiv}
+                  className=" flex-shrink-0 w-14 transition-all duration-300 transform hover:grayscale cursor-pointer text-blue-500"
               >
-                {isExpanded ? <ChevronUpIcon className="w-full h-auto transform rotate-180 transition-transform duration-300" /> : <ChevronDownIcon className="w-full h-auto transition-transform duration-300" />}
+                <DeleteIcon className="w-7 h-7" />
               </div>
-            )}
-          </div>
+              {isSkills && (
+                  <div
+                      className="flex-shrink-0 w-6 transition-all duration-300 transform hover:grayscale cursor-pointer"
+                      style={{ marginTop: '5px' }}
+                      onClick={stopPropagationDiv}
+                  >
+                    {isExpanded ? <ChevronUpIcon className="w-full h-auto transform rotate-180 transition-transform duration-300" /> : <ChevronDownIcon className="w-full h-auto transition-transform duration-300" />}
+                  </div>
+              )}
+            </div>
         )}
       </div>
       {isExpanded && isSkills && (
