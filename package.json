@@ -21,7 +21,6 @@
   "scripts": {
     "build": "tsc && vite build",
     "package": "npm run build && npm pack",
-    "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
