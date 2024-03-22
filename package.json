@@ -1,6 +1,10 @@
 {
   "name": "@mbicycle/foundation-ui-kit",
-  "version": "1.0.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.0.1",
   "files": [
     "dist"
   ],
