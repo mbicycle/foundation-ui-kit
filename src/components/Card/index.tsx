@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from './icon';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 type CardProps = {
     title: React.ReactNode;
@@ -39,7 +40,7 @@ export const Card: React.FC<CardProps> = ({
             <div
               className="mr-3 flex-shrink-0 w-4 transition-all duration-300 transform hover:grayscale cursor-pointer"
             >
-              <img src="src/common/icons/Dots.svg" alt="Move Icon" className="w-full h-auto" />
+              <DragIndicatorIcon className="text-gray-500" />
             </div>
           )}
           <div>
