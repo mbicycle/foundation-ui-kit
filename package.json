@@ -1,8 +1,6 @@
 {
   "name": "@mbicycle/foundation-ui-kit",
-  "private": true,
   "version": "1.0.0",
-  "license": "MIT",
   "files": [
     "dist"
   ],
