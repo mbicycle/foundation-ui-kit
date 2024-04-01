@@ -1,26 +1,19 @@
+import React from 'react';
+
+type ComponentWithClassProps = {
+    className?: string;
+};
+
+type TextVariant = 'heading-two' | 'heading-three' | 'heading-four' | 'heading-five' | 'heading-six' |
+    'body-large' | 'body-medium' | 'body-small' | 'body-micro' | 'number-large' | 'number-medium' |
+    'number-small' | 'number-micro';
+
 type TextProps = {
-    variant?: string;
+    variant?: TextVariant;
     children: React.ReactNode;
-};
+} & ComponentWithClassProps;
 
-type Variants = {
-    'heading-two': string;
-    'heading-three': string;
-    'heading-four': string;
-    'heading-five': string;
-    'heading-six': string;
-    'body-large': string;
-    'body-medium': string;
-    'body-small': string;
-    'body-micro': string;
-    'number-large': string;
-    'number-medium': string;
-    'number-small': string;
-    'number-micro': string;
-};
-
-const Text: React.FC<TextProps> = ({ variant = '', children }) => {
-  const variants: Variants = {
+const textVariants: Record<TextVariant, string> = {
     'heading-two': 'text-2xl font-bold',
     'heading-three': 'text-xl font-bold',
     'heading-four': 'text-lg font-bold',
@@ -34,11 +27,14 @@ const Text: React.FC<TextProps> = ({ variant = '', children }) => {
     'number-medium': 'text-base font-semibold',
     'number-small': 'text-sm font-semibold',
     'number-micro': 'text-xs font-semibold',
-  };
+};
 
-  const textStyle = variant && variants[variant as keyof Variants] ? variants[variant as keyof Variants] : '';
+const Text: React.FC<TextProps> = ({ variant = '', children, className }) => {
+    const textStyle = variant && textVariants[variant] ? textVariants[variant] : '';
 
-  return <span className={textStyle}>{children}</span>;
+    const combinedClassName = `${className} ${textStyle}`.trim();
+
+    return <span className={combinedClassName}>{children}</span>;
 };
 
 export default Text;

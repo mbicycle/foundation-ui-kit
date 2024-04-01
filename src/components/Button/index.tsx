@@ -1,91 +1,107 @@
-import type { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
+import {AddIcon, ExportIcon} from "components/Button/icon";
 
-import { AddIcon, ExportIcon } from './icon';
+type ButtonSize = 'small' | 'medium' | 'large';
+type ButtonVariant = 'primary' | 'warning' | 'transparent' | 'empty' | 'outline';
 
-type Props = {
+type ButtonProps = {
   children: React.ReactNode;
   isDisabled?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: ButtonSize;
   uppercase?: boolean;
-  variant?: 'primary' | 'warning' | 'transparent' | 'empty' | 'outline';
+  variant?: ButtonVariant;
   isExport?: boolean;
   isAdd?: boolean;
+  className?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function Button(props: Props) {
-  const {
-    variant = 'primary', isDisabled, isExport, isAdd, ...rest
-  } = props;
+type ToggleProps = {
+  checked?: boolean;
+  text?: string;
+  color?: 'blue' | 'red' | 'yellow';
+  className?: string;
+} & InputHTMLAttributes<HTMLInputElement>;
 
-  const buttonClasses = `
-    px-4 py-2 rounded-md flex items-center justify-center transition-all duration-300 
-    ${getSizeClasses(props.size)}
-    ${getVariantClasses(variant, isDisabled)}
-    ${isDisabled ? 'cursor-not-allowed' : ''}
-    ${isDisabled ? 'pointer-events-none' : ''}
-  `;
+export function Button({
+                         children,
+                         isDisabled = false,
+                         size = 'medium',
+                         uppercase = false,
+                         variant = 'primary',
+                         isExport = false,
+                         isAdd = false,
+                         className = '',
+                         ...rest
+                       }: ButtonProps) {
+  const buttonClasses = {
+    base: 'px-4 py-2 rounded-md flex items-center justify-center transition-all duration-300',
+    size: getSizeClass(size),
+    variant: getVariantClass(variant, isDisabled),
+    disabled: isDisabled ? 'cursor-not-allowed pointer-events-none' : '',
+  };
 
-  const buttonText = props.uppercase
-    ? String(props.children).toUpperCase()
-    : props.children;
-
+  const buttonText = uppercase ? String(children).toUpperCase() : children;
   const IconComponent = isExport ? ExportIcon : (isAdd ? AddIcon : null);
 
   return (
-    <button className={buttonClasses} disabled={isDisabled} {...rest}>
-      {IconComponent && (
-        <IconComponent />
-      )}
-      {buttonText}
-    </button>
+      <button className={`${Object.values(buttonClasses).join(' ')} ${className}`} disabled={isDisabled} {...rest}>
+        {IconComponent && <IconComponent />}
+        {buttonText}
+      </button>
   );
 }
 
-const getSizeClasses = (size?: 'small' | 'medium' | 'large') => {
-  switch (size) {
-    case 'small':
-      return 'text-sm';
-    case 'medium':
-      return 'text-md';
-    case 'large':
-      return 'text-2xl';
-    default:
-      return '';
-  }
+export function Toggle({
+                         checked = false,
+                         text = '',
+                         color = 'blue',
+                         className = '',
+                         ...rest
+                       }: ToggleProps) {
+  const toggleClasses = {
+    base: 'rounded-full px-4 py-2 transition-all duration-300',
+    color: getColorClass(color),
+  };
+
+  return (
+      <input
+          type="checkbox"
+          checked={checked}
+          className={`${Object.values(toggleClasses).join(' ')} ${className}`}
+          {...rest}
+      />
+  );
+}
+
+const sizeClasses: Record<ButtonSize, string> = {
+  'small': 'text-sm',
+  'medium': 'text-md',
+  'large': 'text-2xl',
 };
 
-const getVariantClasses = (variant: string, isDisabled?: boolean | undefined) => {
-  switch (variant) {
-    case 'primary':
-      return `
-        text-white 
-        ${isDisabled ? 'bg-gray-300' : 'bg-blue-500 hover:bg-blue-400 active:transform active:scale-95'}
-        transition-transform
-      `;
-    case 'warning':
-      return `
-        text-white
-        ${isDisabled ? 'bg-gray-500' : 'bg-red-500 hover:bg-red-400 active:transform active:scale-95'}
-        transition-transform
-      `;
-    case 'transparent':
-      return `
-        text-blue-500 
-        ${isDisabled ? 'bg-gray-300' : 'hover:bg-blue-100 border border-blue-500 hover:border-blue-400 active:transform active:scale-95'}
-        transition-transform
-      `;
-    case 'empty':
-      return `
-        text-blue-500 
-        ${isDisabled ? 'bg-gray-300' : 'hover:bg-blue-100 active:transform active:scale-95'}
-        transition-transform
-      `;
-    case 'outline':
-      return `
-        text-white border border-white hover:bg-white-100 // Изменено на белый цвет текста и бордеров
-        ${isDisabled ? 'bg-gray-300' : 'active:transform active:scale-95'}
-        transition-transform
-      `;
+const getSizeClass = (size: "small" | "medium" | "large" | undefined): string => sizeClasses[size] || '';
+
+const variantClasses: Record<ButtonVariant, string> = {
+  'primary': 'text-white bg-blue-500 hover:bg-blue-400 active:transform active:scale-95 transition-transform',
+  'warning': 'text-white bg-red-500 hover:bg-red-400 active:transform active:scale-95 transition-transform',
+  'transparent': 'text-blue-500 hover:bg-blue-100 border border-blue-500 hover:border-blue-400 active:transform active:scale-95 transition-transform',
+  'empty': 'text-blue-500 hover:bg-blue-100 active:transform active:scale-95 transition-transform',
+  'outline': 'text-white border border-white hover:bg-white-100 active:transform active:scale-95 transition-transform',
+};
+
+const getVariantClass = (variant: "primary" | "warning" | "transparent" | "empty" | "outline" | undefined, isDisabled: boolean | undefined): string => {
+  const baseClass = variantClasses[variant] || '';
+  return isDisabled ? `${baseClass} bg-gray-300` : baseClass;
+};
+
+const getColorClass = (color: "blue" | "red" | "yellow" | undefined): string => {
+  switch (color) {
+    case 'blue':
+      return 'bg-blue-500 hover:bg-blue-400';
+    case 'red':
+      return 'bg-red-500 hover:bg-red-400';
+    case 'yellow':
+      return 'bg-yellow-500 hover:bg-yellow-400';
     default:
       return '';
   }

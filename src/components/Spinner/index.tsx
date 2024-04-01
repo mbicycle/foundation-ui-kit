@@ -1,8 +1,9 @@
+import React from 'react';
 import Icon from './icon';
 
 type SpinnerProps = {
-    className?: string;
-    size?: 'small' | 'medium' | 'large' | 'extra-large';
+  className?: string;
+  size?: 'small' | 'medium' | 'large' | 'extra-large';
 };
 
 const Spinner: React.FC<SpinnerProps> = ({ className = '', size = 'medium' }) => {
@@ -25,10 +26,10 @@ const Spinner: React.FC<SpinnerProps> = ({ className = '', size = 'medium' }) =>
   }
 
   return (
-    <div role="status" className={className}>
-      <Icon className={`inline animate-spin text-gray-200 dark:text-gray-600 fill-blue-600 ${iconSize}`} />
-      <span className="sr-only">Loading...</span>
-    </div>
+      <div role="status" className={`spinner ${className}`}>
+        <Icon className={`inline animate-spin text-gray-200 dark:text-gray-600 fill-blue-600 ${iconSize}`} />
+        <span className="sr-only">Loading...</span>
+      </div>
   );
 };
 
