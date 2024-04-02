@@ -1,10 +1,10 @@
 import { InputHTMLAttributes } from 'react';
 
 type InputProps = {
-    type: 'text' | 'tel' | 'url' | 'email' | 'password' | 'number';
-    id: string;
-    label: string;
-    placeholder: string;
+    type?: 'text' | 'tel' | 'url' | 'email' | 'password' | 'number';
+    id?: string;
+    label?: string;
+    placeholder?: string;
     inputClasses?: string;
     wrapperClasses?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
