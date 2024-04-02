@@ -29,8 +29,8 @@ const textVariants: Record<TextVariant, string> = {
     'number-micro': 'text-xs font-semibold',
 };
 
-const Text: React.FC<TextProps> = ({ variant = '', children, className }) => {
-    const textStyle = variant && textVariants[variant] ? textVariants[variant] : '';
+const Text: React.FC<TextProps> = ({ variant, children, className }: {variant?: TextVariant, children: any, className?: string}) => {
+    const textStyle = (variant && textVariants[variant]) || '';
 
     const combinedClassName = `${className} ${textStyle}`.trim();
 

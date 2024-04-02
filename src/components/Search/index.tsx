@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
 type ComponentWithClassProps = {
     className?: string;
@@ -6,13 +6,13 @@ type ComponentWithClassProps = {
 
 type SearchProps = {
     searchPlaceholder?: string;
-    size?: 'small' | 'medium' | 'large';
+    elementSize?: 'small' | 'medium' | 'large';
 } & ComponentWithClassProps & InputHTMLAttributes<HTMLInputElement>;
 
-export function Search({ searchPlaceholder, size = 'medium', className = '', ...rest }: SearchProps) {
+export function Search({ searchPlaceholder, elementSize = 'medium', className = '', ...rest }: SearchProps) {
     return (
         <form className={`flex ${className}`}>
-            <div className={`relative inline-block ${size === 'small' ? 'w-56' : size === 'large' ? 'w-96' : 'w-80'}`}>
+            <div className={`relative inline-block ${elementSize === 'small' ? 'w-56' : elementSize === 'large' ? 'w-96' : 'w-80'}`}>
                 <label htmlFor="search-dropdown" className="sr-only">Search</label>
                 <input
                     type="search"

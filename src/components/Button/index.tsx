@@ -17,7 +17,6 @@ type ButtonProps = {
 
 type ToggleProps = {
   checked?: boolean;
-  text?: string;
   color?: 'blue' | 'red' | 'yellow';
   className?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
@@ -53,7 +52,6 @@ export function Button({
 
 export function Toggle({
                          checked = false,
-                         text = '',
                          color = 'blue',
                          className = '',
                          ...rest
@@ -79,7 +77,7 @@ const sizeClasses: Record<ButtonSize, string> = {
   'large': 'text-2xl',
 };
 
-const getSizeClass = (size: "small" | "medium" | "large" | undefined): string => sizeClasses[size] || '';
+const getSizeClass = (size: "small" | "medium" | "large" = "medium"): string => sizeClasses[size] || '';
 
 const variantClasses: Record<ButtonVariant, string> = {
   'primary': 'text-white bg-blue-500 hover:bg-blue-400 active:transform active:scale-95 transition-transform',
@@ -89,8 +87,8 @@ const variantClasses: Record<ButtonVariant, string> = {
   'outline': 'text-white border border-white hover:bg-white-100 active:transform active:scale-95 transition-transform',
 };
 
-const getVariantClass = (variant: "primary" | "warning" | "transparent" | "empty" | "outline" | undefined, isDisabled: boolean | undefined): string => {
-  const baseClass = variantClasses[variant] || '';
+const getVariantClass = (variant?: "primary" | "warning" | "transparent" | "empty" | "outline", isDisabled?: boolean): string => {
+  const baseClass = variant && variantClasses[variant] || '';
   return isDisabled ? `${baseClass} bg-gray-300` : baseClass;
 };
 
