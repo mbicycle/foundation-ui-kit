@@ -1,13 +1,16 @@
-import { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 
-export type InputProps = {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     type?: 'text' | 'tel' | 'url' | 'email' | 'password' | 'number';
     id?: string;
     label?: string;
     placeholder?: string;
     inputClasses?: string;
     wrapperClasses?: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+    multiline?: boolean;
+    helperText?: string;
+    helperTextClassName?: string;
+}
 
 export function Input({
                           type,
@@ -16,8 +19,13 @@ export function Input({
                           placeholder,
                           inputClasses = '',
                           wrapperClasses = '',
+                          multiline = false,
+                          helperText,
+                          helperTextClassName = '',
                           ...rest
                       }: InputProps) {
+    const InputComponent = multiline ? 'textarea' : 'input';
+
     return (
         <div className={`${wrapperClasses}`}>
             {label && (
@@ -25,7 +33,7 @@ export function Input({
                     {label}
                 </label>
             )}
-            <input
+            <InputComponent
                 type={type}
                 id={id}
                 className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${inputClasses}`}
@@ -33,6 +41,9 @@ export function Input({
                 required
                 {...rest}
             />
+            {helperText && (
+                <span className={`block mt-1 text-sm text-gray-500 ${helperTextClassName}`}>{helperText}</span>
+            )}
         </div>
     );
 }
