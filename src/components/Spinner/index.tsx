@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from './icon';
 
-type SpinnerProps = {
+export type SpinnerProps = {
   className?: string;
   size?: 'small' | 'medium' | 'large' | 'extra-large';
 };

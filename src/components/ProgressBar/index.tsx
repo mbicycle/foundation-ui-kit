@@ -1,6 +1,6 @@
 import React from 'react';
 
-type ComponentWithClassProps = {
+export type ComponentWithClassProps = {
   className?: string;
 };
 

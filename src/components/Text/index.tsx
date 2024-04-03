@@ -1,14 +1,14 @@
 import React from 'react';
 
-type ComponentWithClassProps = {
+export type ComponentWithClassProps = {
     className?: string;
 };
 
-type TextVariant = 'heading-two' | 'heading-three' | 'heading-four' | 'heading-five' | 'heading-six' |
+export type TextVariant = 'heading-two' | 'heading-three' | 'heading-four' | 'heading-five' | 'heading-six' |
     'body-large' | 'body-medium' | 'body-small' | 'body-micro' | 'number-large' | 'number-medium' |
     'number-small' | 'number-micro';
 
-type TextProps = {
+export type TextProps = {
     variant?: TextVariant;
     children: React.ReactNode;
 } & ComponentWithClassProps;

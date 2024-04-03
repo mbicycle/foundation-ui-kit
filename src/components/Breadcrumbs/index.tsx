@@ -1,6 +1,6 @@
 import React from 'react';
 
-type BreadcrumbProps = {
+export type BreadcrumbProps = {
     items: string[];
     className?: string;
     ariaLabel?: string;

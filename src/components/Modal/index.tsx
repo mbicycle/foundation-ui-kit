@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-type ModalButtonProps = {
+export type ModalButtonProps = {
   modalId: string;
   buttonText: string;
   buttonClassName?: string;

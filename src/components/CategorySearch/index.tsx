@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, useState } from 'react';
 
-type CategorySearchProps = {
+export type CategorySearchProps = {
   searchPlaceholder?: string;
   categories: string[];
   elementSize?: 'small' | 'medium' | 'large';

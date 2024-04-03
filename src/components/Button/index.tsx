@@ -4,7 +4,7 @@ import {AddIcon, ExportIcon} from "components/Button/icon";
 type ButtonSize = 'small' | 'medium' | 'large';
 type ButtonVariant = 'primary' | 'warning' | 'transparent' | 'empty' | 'outline';
 
-type ButtonProps = {
+export type ButtonProps = {
   children: React.ReactNode;
   isDisabled?: boolean;
   size?: ButtonSize;

@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes } from 'react';
 
-type LinkProps = {
+export type LinkProps = {
   className?: string;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 

@@ -1,6 +1,6 @@
 import {InputHTMLAttributes} from 'react';
 
-type ToggleProps = {
+export type ToggleProps = {
     text?: string;
     color?: 'blue' | 'red' | 'yellow';
     className?: string;

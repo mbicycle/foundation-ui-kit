@@ -3,7 +3,7 @@ import { ChevronDownIcon, ChevronUpIcon } from './icon';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
-type CardProps = {
+export type CardProps = {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   showMoveIcon?: boolean;

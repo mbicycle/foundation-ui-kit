@@ -1,7 +1,7 @@
 import { useState, InputHTMLAttributes } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from './icon';
 
-interface DropdownProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface DropdownProps extends InputHTMLAttributes<HTMLInputElement> {
     options: string[];
     placeholder?: string;
     className?: string;

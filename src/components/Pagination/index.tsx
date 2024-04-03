@@ -1,6 +1,6 @@
 import React from 'react';
 
-type PaginationProps = {
+export type PaginationProps = {
   variant?: 'small' | 'large';
   className?: string;
 };

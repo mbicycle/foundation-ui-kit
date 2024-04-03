@@ -1,6 +1,6 @@
 import React, {InputHTMLAttributes, useState} from 'react';
 
-type TooltipProps = {
+export type TooltipProps = {
     content: string;
     position?: 'top' | 'right' | 'bottom' | 'left';
     className?: string;
