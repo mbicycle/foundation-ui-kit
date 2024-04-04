@@ -4,6 +4,7 @@ export type TooltipProps = {
     content: string;
     position?: 'top' | 'right' | 'bottom' | 'left';
     className?: string;
+    children: JSX.Element
 };
 
 const Tooltip: React.FC<TooltipProps> = ({ content, position = 'top', className = '', children }) => {
