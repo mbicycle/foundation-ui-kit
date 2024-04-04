@@ -28,7 +28,7 @@ const ModalButton: React.FC<ModalButtonProps> = ({ modalId, buttonText, buttonCl
 
         <div
             id={modalId}
-            className={`fixed inset-0 z-10 w-screen overflow-y-auto ${isModalOpen ? '' : 'hidden'}`}
+            className={`fixed inset-0 z-10 w-screen overflow-y-auto ${isModalOpen ? '' : 'hidden'} ${modalClassName}`}
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 

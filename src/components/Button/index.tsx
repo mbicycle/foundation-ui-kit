@@ -13,6 +13,7 @@ export type ButtonProps = {
   isExport?: boolean;
   isAdd?: boolean;
   className?: string;
+  isLoading?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 type ToggleProps = {
