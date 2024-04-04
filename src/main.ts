@@ -9,6 +9,7 @@ export { default as Link } from "components/Link";
 export { default as Modal } from "components/Modal";
 export { default as Pagination } from "components/Pagination";
 export { default as ProgressBar } from "components/ProgressBar";
+export { default as Accordion } from "components/Accordion";
 export { Search } from "components/Search";
 export { default as Spinner } from "components/Spinner";
 export { default as Text } from "components/Text";
