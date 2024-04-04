@@ -4,6 +4,7 @@ export { Card } from "components/Card";
 export { CategorySearch } from "components/CategorySearch";
 export { default as Dropdown } from "components/Dropdown";
 export { Input } from "components/Input";
+export { default as Dropdowns } from "components/Dropdowns";
 export { default as Link } from "components/Link";
 export { default as Modal } from "components/Modal";
 export { default as Pagination } from "components/Pagination";
