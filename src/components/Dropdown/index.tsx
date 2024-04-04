@@ -4,13 +4,17 @@ import { ChevronDownIcon, ChevronUpIcon } from './icon';
 export interface DropdownProps extends InputHTMLAttributes<HTMLInputElement> {
     options: string[];
     placeholder?: string;
-    className?: string;
+    classesWrapper?: string;
+    classesInput?: string;
+    classesOption?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
                                                options,
                                                placeholder,
-                                               className = '',
+                                               classesWrapper = '',
+                                               classesInput = '',
+                                               classesOption = '',
                                                ...rest
                                            }) => {
     const [selectedOption, setSelectedOption] = useState('');
@@ -26,14 +30,14 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
 
     return (
-        <div className={`relative ${className}`} {...rest}>
+        <div className={`relative ${classesWrapper}`}>
             <input
                 type="text"
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target.value)}
                 onFocus={toggleDropdown}
                 onBlur={() => setTimeout(() => setIsDropdownOpen(false), 200)}
-                className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                className={`block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 ${classesInput}`}
                 placeholder={placeholder || 'Select an option...'}
                 {...rest}
             />
@@ -52,7 +56,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                         <div
                             key={index}
                             onClick={() => handleOptionClick(option)}
-                            className="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            className={`cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${classesOption}`}
                         >
                             {option}
                         </div>
