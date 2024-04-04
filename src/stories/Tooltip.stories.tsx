@@ -9,7 +9,7 @@ const meta: Meta = {
   },
   tags: ['autodocs'],
   args: {
-    children: <button data-tooltip-target="tooltip-default" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Hover over me</button>
+    children: <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Hover over me</button>
   }
 };
 
