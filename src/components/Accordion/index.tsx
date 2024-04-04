@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export type AccordionProps = {
     items: { heading: string; content: React.ReactNode }[];
