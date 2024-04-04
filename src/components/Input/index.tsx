@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     type?: 'text' | 'tel' | 'url' | 'email' | 'password' | 'number';
@@ -10,6 +10,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     multiline?: boolean;
     helperText?: string;
     helperTextClassName?: string;
+    error?: string; // Добавляем prop для ошибки
 }
 
 export function Input({
@@ -22,6 +23,7 @@ export function Input({
                           multiline = false,
                           helperText,
                           helperTextClassName = '',
+                          error,
                           ...rest
                       }: InputProps) {
     const InputComponent = multiline ? 'textarea' : 'input';
@@ -36,12 +38,15 @@ export function Input({
             <InputComponent
                 type={type}
                 id={id}
-                className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${inputClasses}`}
+                className={`bg-gray-50 border ${error ? 'border-red-500' : 'border-gray-300'} text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${inputClasses}`}
                 placeholder={placeholder}
                 required
                 {...rest}
             />
-            {helperText && (
+            {error && (
+                <span className="block mt-1 text-sm text-red-500">{error}</span>
+            )}
+            {helperText && !error && (
                 <span className={`block mt-1 text-sm text-gray-500 ${helperTextClassName}`}>{helperText}</span>
             )}
         </div>

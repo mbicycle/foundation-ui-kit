@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
-import {AddIcon, ExportIcon} from "components/Button/icon";
+import {AddIcon, ExportIcon, SpinnerIcon} from "components/Button/icon";
 
 type ButtonSize = 'small' | 'medium' | 'large';
 type ButtonVariant = 'primary' | 'warning' | 'transparent' | 'empty' | 'outline';
@@ -28,6 +28,7 @@ export function Button({
                          uppercase = false,
                          variant = 'primary',
                          isExport = false,
+                         isLoading = false,
                          isAdd = false,
                          className = '',
                          ...rest
@@ -40,14 +41,16 @@ export function Button({
   };
 
   const buttonText = uppercase ? String(children).toUpperCase() : children;
-  const IconComponent = isExport ? ExportIcon : (isAdd ? AddIcon : null);
+  const IconComponent = isLoading ? SpinnerIcon : (isExport ? ExportIcon : (isAdd ? AddIcon : null));
 
-  return (
-      <button className={`${Object.values(buttonClasses).join(' ')} ${className}`} disabled={isDisabled} {...rest}>
-        {IconComponent && <IconComponent />}
-        {buttonText}
-      </button>
-  );
+    return (
+        <button className={`${Object.values(buttonClasses).join(' ')} ${className}`} disabled={isDisabled} {...rest}>
+            {IconComponent && <IconComponent className="mr-4" />} {/* Отображаем иконку с отступом справа, если она есть */}
+            <span className={IconComponent ? "ml-1" : ""}>{buttonText}</span> {/* Отображаем текст кнопки с отступом слева, если есть иконка */}
+        </button>
+    );
+
+
 }
 
 export function Toggle({
