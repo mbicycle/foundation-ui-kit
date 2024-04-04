@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Listbox, Transition } from '@headlessui/react';
+import { Listbox, Transition } from "@headlessui/react";
 
 export type Option = {
   id: string
@@ -7,51 +6,67 @@ export type Option = {
 }
 
 export interface SelectProps<T> {
-  name: string;
   onChange: T extends { multiple: true } ? (value: string[]) => void : (value: string) => void;
-  value: T extends { multiple: true } ? string[] : Option | null;
+  value: T extends { multiple: true } ? string[] : string | null;
   options: Option[];
   multiple?: boolean;
   label?: string;
+  disabled?: boolean;
+  id?: string;
+  name?: string;
+  required?: boolean;
+  placeholder?: string;
+  classNameWrapper?: string;
+  classNameLabel?: string;
+  classNameInput?: string;
+  classNameListOption?: string;
 }
 
-// eslint-disable-next-line prefer-arrow-callback
 const Select = ({
                   onChange,
                   value,
                   options,
                   multiple,
                   label,
+                  placeholder = "Select",
+                  classNameWrapper = '',
+                  classNameLabel = '',
+                  classNameInput = '',
+                  classNameListOption = '',
                   ...props
                 }: SelectProps<any>) => {
 
+  const selectedItem = options.find((item) => item.id === value);
+
+  console.dir({ label, placeholder, value, props })
+  
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-full max-w-xs mx-auto">
+      <div className={`w-full max-w-xs mx-auto ${classNameWrapper}`}>
         <Listbox
           {...props}
           as="div"
           className="space-y-1"
           value={value || null}
-          onChange={(eventValue: any) => {
-            onChange(eventValue);
-          }}
+          onChange={onChange}
           multiple={multiple}
         >
-          {({open}) => (
+          {({ open }) => (
             <>
               {label && (
-                <Listbox.Label className="block text-sm leading-5 font-medium text-gray-700">
+                <Listbox.Label className={`block leading-5 mb-4 font-medium text-gray-700 ${classNameLabel}`}>
                   {label}
                 </Listbox.Label>
               )}
               <div className="relative">
                     <span className="inline-block w-full rounded-md shadow-sm">
                       <Listbox.Button
-                        className="cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                        className={`cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left
+                          focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+                          transition ease-in-out duration-150
+                          disabled:bg-gray-100 disabled:text-gray-400 ${classNameInput}`}
                       >
                         <span className="block truncate">
-                          {(Array.isArray(value) ? `Selected: ${value.length || 0}` : value?.name) || 'Select'}
+                          {(Array.isArray(value) ? `Selected: ${value.length || 0}` : selectedItem?.name) || placeholder}
                         </span>
                         <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                           <svg
@@ -77,11 +92,11 @@ const Select = ({
                   leave="transition ease-in duration-100"
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
-                  className="absolute mt-1 w-full rounded-md bg-white shadow-lg"
+                  className="absolute z-40 mt-1 w-full rounded-md bg-white shadow-lg"
                 >
                   <Listbox.Options
                     static
-                    className="max-h-60 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
+                    className="max-h-60 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none"
                   >
                     {options.map((item) => (
                       <Listbox.Option key={item.id} value={item.id}>
@@ -91,7 +106,7 @@ const Select = ({
                               active
                                 ? 'text-white bg-blue-600'
                                 : 'text-gray-900'
-                            } cursor-default select-none relative py-2 pl-8 pr-4`}
+                            } cursor-default select-none relative py-2 pl-8 pr-4 ${classNameListOption}`}
                           >
                                 <span
                                   className={`${
@@ -131,7 +146,6 @@ const Select = ({
           )}
         </Listbox>
       </div>
-    </div>
   );
 };
 
