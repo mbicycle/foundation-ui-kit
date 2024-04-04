@@ -1,63 +1,69 @@
-import { useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 
-export type ModalButtonProps = {
-  modalId: string;
-  buttonText: string;
-  buttonClassName?: string;
-  modalClassName?: string;
+export type ModalProps = {
+  children: React.ReactNode
+  open: boolean
+  onClose: VoidFunction
+  title?: string
+  classNameContent?: string
+  classNameTitle?: string
 };
 
-const ModalButton: React.FC<ModalButtonProps> = ({ modalId, buttonText, buttonClassName = '', modalClassName = '' }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const Modal = (props: ModalProps) => {
+  const {
+    open,
+    onClose,
+    title = '',
+    classNameTitle = '',
+    classNameContent = '',
+    children
+  } = props;
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
 
   return (
-      <>
-        <button
-            data-modal-target={modalId}
-            data-modal-toggle={modalId}
-            className={`block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ${buttonClassName}`}
-            type="button"
-            onClick={toggleModal}
+    <Transition appear show={open} as={Fragment}>
+      <Dialog as="div" className="relative z-30" onClose={onClose}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          {buttonText}
-        </button>
+          <div className="fixed inset-0 bg-black/25" />
+        </Transition.Child>
 
-        <div
-            id={modalId}
-            className={`fixed inset-0 z-10 w-screen overflow-y-auto ${isModalOpen ? '' : 'hidden'} ${modalClassName}`}
-        >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-              <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-start">
-                  <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                    <svg className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                    </svg>
-                  </div>
-                  <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                    <h3 className="text-base font-semibold leading-6 text-gray-900">Deactivate account</h3>
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" onClick={toggleModal}>Deactivate</button>
-                <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onClick={toggleModal}>Cancel</button>
-              </div>
-            </div>
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel
+                className={`w-[420px] transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all ${classNameContent}`}
+              >
+                {title && <Dialog.Title
+                  as="h3"
+                  className={`text-lg font-medium leading-6 text-gray-900 ${classNameTitle}`}
+                >
+                  {title}
+                </Dialog.Title>}
+                {children}
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
         </div>
-      </>
+      </Dialog>
+    </Transition>
   );
 };
 
-export default ModalButton;
+export default Modal;
