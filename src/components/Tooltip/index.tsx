@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export type TooltipProps = {
     content: string;
@@ -24,7 +24,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, position = 'top', className 
                     style={{
                         [position]: 'calc(100% + 0.5rem)',
                         transform: position === 'right' || position === 'left' ? 'translateY(-50%)' : '',
-                        whiteSpace: 'nowrap',
+                        whiteSpace: 'normal',
                     }}
                 >
                     {content}
