@@ -10,7 +10,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLT
     multiline?: boolean;
     helperText?: string;
     helperTextClassName?: string;
-    error?: string; // Добавляем prop для ошибки
+    error?: boolean;
 }
 
 export function Input({
@@ -43,11 +43,8 @@ export function Input({
                 required
                 {...rest}
             />
-            {error && (
-                <span className="block mt-1 text-sm text-red-500">{error}</span>
-            )}
-            {helperText && !error && (
-                <span className={`block mt-1 text-sm text-gray-500 ${helperTextClassName}`}>{helperText}</span>
+            {helperText && (
+                <span className={`block mt-1 text-sm text-gray-500 ${error ? "text-red-500" : "text-gray-500"} ${helperTextClassName}`}>{helperText}</span>
             )}
         </div>
     );
