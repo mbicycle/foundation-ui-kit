@@ -1,19 +1,18 @@
-import React, { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
-import {AddIcon, ExportIcon, SpinnerIcon} from "components/Button/icon";
+import { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
+import { SpinnerIcon } from "components/Button/icon";
 
 type ButtonSize = 'small' | 'medium' | 'large';
 type ButtonVariant = 'primary' | 'warning' | 'transparent' | 'empty' | 'outline';
 
 export type ButtonProps = {
   children: React.ReactNode;
+  icon?: React.ElementType;
   isDisabled?: boolean;
   size?: ButtonSize;
-  uppercase?: boolean;
   variant?: ButtonVariant;
-  isExport?: boolean;
-  isAdd?: boolean;
-  className?: string;
   isLoading?: boolean;
+  className?: string;
+  classNameIcon?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 type ToggleProps = {
@@ -24,14 +23,13 @@ type ToggleProps = {
 
 export function Button({
                          children,
+                         icon,
                          isDisabled = false,
                          size = 'medium',
-                         uppercase = false,
                          variant = 'primary',
-                         isExport = false,
                          isLoading = false,
-                         isAdd = false,
                          className = '',
+                         classNameIcon = '',
                          ...rest
                        }: ButtonProps) {
   const buttonClasses = {
@@ -41,13 +39,12 @@ export function Button({
     disabled: isDisabled ? 'cursor-not-allowed pointer-events-none' : '',
   };
 
-  const buttonText = uppercase ? String(children).toUpperCase() : children;
-  const IconComponent = isLoading ? SpinnerIcon : (isExport ? ExportIcon : (isAdd ? AddIcon : null));
+  const IconComponent = isLoading ? SpinnerIcon : icon;
 
     return (
         <button className={`${Object.values(buttonClasses).join(' ')} ${className}`} disabled={isDisabled} {...rest}>
-            {IconComponent && <IconComponent className="mr-4" />}
-            <span className={IconComponent ? "ml-1" : ""}>{buttonText}</span>
+            {IconComponent && <IconComponent className={`mr-2 mb-0.5 ${classNameIcon}`} />}
+            {children}
         </button>
     );
 
