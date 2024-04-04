@@ -45,8 +45,8 @@ export function Button({
 
     return (
         <button className={`${Object.values(buttonClasses).join(' ')} ${className}`} disabled={isDisabled} {...rest}>
-            {IconComponent && <IconComponent className="mr-4" />} {/* Отображаем иконку с отступом справа, если она есть */}
-            <span className={IconComponent ? "ml-1" : ""}>{buttonText}</span> {/* Отображаем текст кнопки с отступом слева, если есть иконка */}
+            {IconComponent && <IconComponent className="mr-4" />}
+            <span className={IconComponent ? "ml-1" : ""}>{buttonText}</span>
         </button>
     );
 
