@@ -5,9 +5,9 @@ export type Option = {
   name: string
 }
 
-export interface SelectProps<T> {
-  onChange: T extends { multiple: true } ? (value: string[]) => void : (value: string) => void;
-  value: T extends { multiple: true } ? string[] : string | null;
+export interface SelectProps {
+  onChange: (value: string | string[]) => void;
+  value: string | string[] | null;
   options: Option[];
   multiple?: boolean;
   label?: string;
@@ -34,7 +34,7 @@ const Select = ({
                   classNameInput = '',
                   classNameListOption = '',
                   ...props
-                }: SelectProps<any>) => {
+                }: SelectProps) => {
 
   const selectedItem = options.find((item) => item.id === value);
 

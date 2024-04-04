@@ -48,7 +48,7 @@ const Modal = (props: ModalProps) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`w-[420px] transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all ${classNameContent}`}
+                className={`min-w-[420px] transform rounded-2xl bg-white py-6 px-10 text-left align-middle shadow-xl transition-all ${classNameContent}`}
               >
                 {title && <Dialog.Title
                   as="h3"
