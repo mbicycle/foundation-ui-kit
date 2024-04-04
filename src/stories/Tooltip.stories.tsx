@@ -8,6 +8,9 @@ const meta: Meta = {
     controls: { hideNoControlsWarning: true },
   },
   tags: ['autodocs'],
+  args: {
+    children: <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Hover over me</button>
+  }
 };
 
 export default meta;
