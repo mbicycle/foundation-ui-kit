@@ -1,33 +1,61 @@
-import React from 'react';
+type Route = {
+  path: string,
+  label: string
+}
 
 export type BreadcrumbProps = {
-    items: string[];
-    className?: string;
-    ariaLabel?: string;
-} & React.HTMLAttributes<HTMLDivElement>;
+    routes: Route[];
+    classNameWrapper?: string;
+    classNameItem?: string;
+    connector?: React.ReactNode;
+    activeStep?: number;
+    onClickStep: ({event, path, index}:{ event: React.MouseEvent, path: string, index: number }) => void;
+};
 
-export function Breadcrumb({ items, className = '', ariaLabel = 'Breadcrumb', ...rest }: BreadcrumbProps) {
-    return (
-        <nav className={`flex ${className}`} aria-label={ariaLabel} {...rest}>
-            <ol className="inline-flex items-center space-x-2 md:space-x-4 rtl:space-x-reverse">
-                {items.map((item, index) => (
-                    <li key={index} className="inline-flex items-center">
-                        {index !== 0 && (
-                            <div className="flex items-center">
-                                <svg className="rtl:rotate-180 w-6 h-6 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 20">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m3 16 6-6-6-6" />
-                                </svg>
-                                <a href="#" className="ms-2 text-base font-medium text-gray-700 hover:text-blue-600 md:ms-4 dark:text-gray-400 dark:hover:text-white">{item}</a>
-                            </div>
-                        )}
-                        {index === 0 && (
-                            <a href="#" className="inline-flex items-center text-base font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-                                {item}
-                            </a>
-                        )}
-                    </li>
-                ))}
-            </ol>
-        </nav>
-    );
+export function Breadcrumb({
+                             routes,
+                             classNameWrapper = '',
+                             classNameItem = '',
+                             connector,
+                             onClickStep,
+                             activeStep,
+                             ...rest
+}: BreadcrumbProps) {
+  const renderConnector = () => {
+    if (!connector) {
+      return (
+        <svg className="rtl:rotate-180 w-6 h-6 text-gray-400 mx-1" aria-hidden="true"
+             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 20">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m3 16 6-6-6-6"/>
+        </svg>
+      )
+    }
+    return  connector;
+  }
+
+  console.log(activeStep)
+
+  return (
+    <nav className={`flex ${classNameWrapper}`}  {...rest}>
+      <ol className="inline-flex items-center space-x-2 md:space-x-4 rtl:space-x-reverse">
+        {routes.map(({path, label}, index) => (
+          <li key={index} className="inline-flex items-center">
+              <div className="flex items-center">
+                {index !== 0 && renderConnector()}
+                <button
+                  type="button"
+                  onClick={(event) => onClickStep({ event, path, index })}
+                  className={`ms-2 text-base
+                  hover:text-blue-600 md:ms-4 
+                  ${activeStep === index ? 'text-blue-500 font-bold' : 'text-gray-700 font-medium'}
+                  ${classNameItem}`}
+                >
+                  {label}
+                </button>
+              </div>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
 }

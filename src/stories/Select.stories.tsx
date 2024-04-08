@@ -39,7 +39,6 @@ const options = [
 ];
 
 const SelectWithHooks = (props: any) => {
-  console.log("Args", props)
   const [selected, setSelected] = useState<string | null>(null);
 
   return <Select
