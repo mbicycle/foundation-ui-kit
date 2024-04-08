@@ -7,6 +7,11 @@ const meta: Meta = {
   parameters: {
     controls: { hideNoControlsWarning: true },
   },
+  argTypes: {
+    defaultOpen: {
+      control: 'boolean',
+    },
+  },
   tags: ['autodocs'],
 };
 
@@ -25,5 +30,8 @@ const RenderAccordion = (props: any) => {
 };
 
 export const Default: Story = {
+  args: {
+    defaultOpen: true,
+  },
   render: (args) => RenderAccordion(args)
 };

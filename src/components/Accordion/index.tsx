@@ -12,6 +12,7 @@ export type AccordionTitleProps = {
     children: React.ReactNode,
     open?: boolean,
     className?: string
+    classNameIcon?: string
 }
 
 export type AccordionProps = {
@@ -26,20 +27,21 @@ type Extensions = {
 }
 
 
-export const Title = ({open = false, children, className = ''}: AccordionTitleProps) => {
+export const Title = ({children, className = '', classNameIcon = ''}: AccordionTitleProps) => {
     return (
-      <Disclosure.Button
-        className={`flex w-full justify-between px-8 py-4 text-left text-sm font-medium 
-        ${open ? 'rounded-t-lg border-t border-x' : 'rounded-lg border shadow'}
-        ${className}
-        `}
-      >
-          {children}
-          <ExpandMoreIcon
-            className={`${
-              open ? 'rotate-180 transform' : ''
-            } h-5 w-5 text-gray-700`}
-          />
+      <Disclosure.Button className="w-full">
+          {({ open }) => (
+            <div className={
+                `flex w-full justify-between items-center px-8 py-4 text-left text-sm font-medium 
+                ${open ? 'rounded-t-lg border-t border-x' : 'rounded-lg border shadow'} 
+                ${className}
+                `}>
+                {children}
+                <ExpandMoreIcon
+                  className={`${open ? 'rotate-180 transform' : ''} size-8 text-gray-700 ${classNameIcon}`}
+                />
+            </div>
+          )}
       </Disclosure.Button>
     )
 }
@@ -55,22 +57,9 @@ export const Body = ({children, className = ''}: AccordionBodyProps) => {
 }
 
 const Accordion: React.FC<AccordionProps> & Extensions = ({ children, defaultOpen = false }) => {
-
-
-    const childrenWithProps = (open: boolean) =>
-      React.Children.map(children,
-        (el) => React.isValidElement(el)
-          // @ts-ignore
-          ? React.cloneElement(el, { open })
-          : el)
-
     return (
           <Disclosure defaultOpen={defaultOpen}>
-              {({ open }) => (
-                <>
-                    {childrenWithProps(open)}
-                </>
-              )}
+              {children}
           </Disclosure>
     );
 };
