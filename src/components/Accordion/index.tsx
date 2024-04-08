@@ -1,64 +1,81 @@
-import { useState } from 'react';
+import { Disclosure } from "@headlessui/react";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import React from "react";
+
+
+export type AccordionBodyProps = {
+    children: React.ReactNode,
+    className?: string
+}
+
+export type AccordionTitleProps = {
+    children: React.ReactNode,
+    open?: boolean,
+    className?: string
+}
 
 export type AccordionProps = {
-    items: { heading: string; content: React.ReactNode }[];
+    children: React.ReactNode;
+    defaultOpen?: boolean;
     className?: string;
 };
 
-const Accordion: React.FC<AccordionProps> = ({ items, className = '' }) => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+type Extensions = {
+    Title: (props: AccordionTitleProps) => JSX.Element,
+    Body: (props: AccordionBodyProps) => JSX.Element,
+}
 
-    const toggleAccordion = (index: number) => {
-        setActiveIndex(activeIndex === index ? null : index);
-    };
+
+export const Title = ({open = false, children, className = ''}: AccordionTitleProps) => {
+    return (
+      <Disclosure.Button
+        className={`flex w-full justify-between px-8 py-4 text-left text-sm font-medium 
+        ${open ? 'rounded-t-lg border-t border-x' : 'rounded-lg border shadow'}
+        ${className}
+        `}
+      >
+          {children}
+          <ExpandMoreIcon
+            className={`${
+              open ? 'rotate-180 transform' : ''
+            } h-5 w-5 text-gray-700`}
+          />
+      </Disclosure.Button>
+    )
+}
+
+
+export const Body = ({children, className = ''}: AccordionBodyProps) => {
+    return (
+      <Disclosure.Panel
+        className={`px-4 pb-2 pt-4 text-sm text-gray-500 rounded-b-lg border-b border-x shadow ${className}`}>
+          {children}
+      </Disclosure.Panel>
+    )
+}
+
+const Accordion: React.FC<AccordionProps> & Extensions = ({ children, defaultOpen = false }) => {
+
+
+    const childrenWithProps = (open: boolean) =>
+      React.Children.map(children,
+        (el) => React.isValidElement(el)
+          // @ts-ignore
+          ? React.cloneElement(el, { open })
+          : el)
 
     return (
-        <div className={`accordion ${className}`}>
-            {items.map((item, index) => (
-                <div key={index} id={`accordion-collapse-${index + 1}`} data-accordion="collapse">
-                    <h2 id={`accordion-collapse-heading-${index + 1}`}>
-                        <button
-                            type="button"
-                            className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 ${
-                                index === 0 ? '' : 'border-t-0'
-                            } ${activeIndex === index ? 'bg-gray-100 dark:bg-gray-800' : 'hover:bg-gray-100 dark:hover:bg-gray-800'} focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 gap-3`}
-                            data-accordion-target={`#accordion-collapse-body-${index + 1}`}
-                            aria-expanded={activeIndex === index ? 'true' : 'false'}
-                            aria-controls={`accordion-collapse-body-${index + 1}`}
-                            onClick={() => toggleAccordion(index)}
-                        >
-                            <span>{item.heading}</span>
-                            <svg
-                                data-accordion-icon
-                                className={`w-3 h-3 rotate-${activeIndex === index ? '180' : '0'} shrink-0`}
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 10 6"
-                            >
-                                <path
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M9 5 5 1 1 5"
-                                />
-                            </svg>
-                        </button>
-                    </h2>
-                    <div
-                        id={`accordion-collapse-body-${index + 1}`}
-                        className={`p-5 border border-gray-200 dark:border-gray-700 ${
-                            activeIndex === index ? '' : 'hidden'
-                        }`}
-                        aria-labelledby={`accordion-collapse-heading-${index + 1}`}
-                    >
-                        {item.content}
-                    </div>
-                </div>
-            ))}
-        </div>
+          <Disclosure defaultOpen={defaultOpen}>
+              {({ open }) => (
+                <>
+                    {childrenWithProps(open)}
+                </>
+              )}
+          </Disclosure>
     );
 };
+
+Accordion.Title = Title
+Accordion.Body = Body
 
 export default Accordion;
