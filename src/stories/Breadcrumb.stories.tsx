@@ -13,9 +13,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const routes = [
-  {path: '1', label: 'Home'},
-  {path: '2', label: 'Projects'},
-  {path: '3', label: 'About'},
+  {route: '1', text: 'Home'},
+  {route: '2', text: 'Projects'},
+  {route: '3', text: 'About'},
 ]
 
 const BreadcrumbsWithHooks = (props: any) => {

@@ -38,13 +38,25 @@ export function Input({
             <InputComponent
                 type={type}
                 id={id}
-                className={`bg-gray-50 border ${error ? 'border-red-500' : 'border-gray-300'} text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${inputClasses}`}
+                className={`bg-gray-50 border 
+                ${error ? 'border-red-500' : 'border-gray-300'} 
+                text-gray-900 rounded-lg
+                focus:ring-blue-500 focus:border-blue-500
+                block w-full p-2.5 resize-none
+                ${multiline ? "min-h-28" : ""}
+                ${inputClasses}`}
                 placeholder={placeholder}
                 required
+
                 {...rest}
             />
             {helperText && (
-                <span className={`block mt-1 text-sm text-gray-500 ${error ? "text-red-500" : "text-gray-500"} ${helperTextClassName}`}>{helperText}</span>
+                <span className={`block mt-1 text-sm text-gray-500 
+                ${error ? "text-red-500" : "text-gray-500"}
+                 ${helperTextClassName}`}
+                >
+                  {helperText}
+                </span>
             )}
         </div>
     );

@@ -1,6 +1,6 @@
 type Route = {
-  path: string,
-  label: string
+  route: string,
+  text: string
 }
 
 export type BreadcrumbProps = {
@@ -9,7 +9,7 @@ export type BreadcrumbProps = {
     classNameItem?: string;
     connector?: React.ReactNode;
     activeStep?: number;
-    onClickStep: ({event, path, index}:{ event: React.MouseEvent, path: string, index: number }) => void;
+    onClickStep: ({event, route, index}:{ event: React.MouseEvent, route: string, index: number }) => void;
 };
 
 export function Breadcrumb({
@@ -38,19 +38,19 @@ export function Breadcrumb({
   return (
     <nav className={`flex ${classNameWrapper}`}  {...rest}>
       <ol className="inline-flex items-center space-x-2 md:space-x-4 rtl:space-x-reverse">
-        {routes.map(({path, label}, index) => (
+        {routes.map(({route, text}, index) => (
           <li key={index} className="inline-flex items-center">
               <div className="flex items-center">
                 {index !== 0 && renderConnector()}
                 <button
                   type="button"
-                  onClick={(event) => onClickStep({ event, path, index })}
+                  onClick={(event) => onClickStep({ event, route, index })}
                   className={`ms-2 text-base
                   hover:text-blue-600 md:ms-4 
                   ${activeStep === index ? 'text-blue-500 font-bold' : 'text-gray-700 font-medium'}
                   ${classNameItem}`}
                 >
-                  {label}
+                  {text}
                 </button>
               </div>
           </li>
