@@ -1,5 +1,5 @@
 import { Disclosure } from "@headlessui/react";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import React from "react";
 
 
@@ -37,7 +37,7 @@ export const Title = ({children, className = '', classNameIcon = ''}: AccordionT
                 ${className}
                 `}>
                 {children}
-                <ExpandMoreIcon
+                <ChevronDownIcon
                   className={`${open ? 'rotate-180 transform' : ''} size-8 text-gray-700 ${classNameIcon}`}
                 />
             </div>

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDownIcon, ChevronUpIcon } from './icon';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { ChevronDownIcon, ChevronUpIcon, TrashIcon } from '@heroicons/react/24/solid';
 
 export type CardProps = {
   title: React.ReactNode;
@@ -45,9 +43,13 @@ export const Card: React.FC<CardProps> = ({title,
           <div className="flex items-center">
             {showMoveIcon && (
                 <div
-                    className="mr-3 flex-shrink-0 w-4 transition-all duration-300 transform hover:grayscale cursor-pointer"
+                    className="text-gray-500 mr-3 flex-shrink-0 transition-all duration-300 transform hover:grayscale cursor-pointer"
                 >
-                  <DragIndicatorIcon className="text-gray-500" />
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M0 0h24v24H0V0z" fill="none"/>
+                    <path
+                      d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                  </svg>
                 </div>
             )}
             <div>
@@ -56,11 +58,11 @@ export const Card: React.FC<CardProps> = ({title,
             </div>
           </div>
           {showDeleteIcon && (
-              <div className="flex items-center">
-                <div
-                    className=" flex-shrink-0 w-14 transition-all duration-300 transform hover:grayscale cursor-pointer text-blue-500"
+            <div className="flex items-center">
+              <div
+                className=" flex-shrink-0 w-14 transition-all duration-300 transform hover:grayscale cursor-pointer text-blue-500"
                 >
-                  <DeleteIcon className="w-7 h-7" />
+                  <TrashIcon className="w-7 h-7" />
                 </div>
                 {isSkills && (
                     <div

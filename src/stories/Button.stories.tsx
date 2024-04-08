@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from 'components/Button';
-import IosShareIcon from '@mui/icons-material/IosShare';
+import { ArrowUpOnSquareIcon } from '@heroicons/react/24/outline';
 
 const meta: Meta = {
   title: 'Example/Button',
@@ -171,7 +171,7 @@ export const LoadingButton: Story = {
 export const IconButton: Story = {
   args: {
     children: 'Export',
-    icon: IosShareIcon
+    icon: ArrowUpOnSquareIcon
   },
   parameters: {
     style: {
