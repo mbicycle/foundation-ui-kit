@@ -41,7 +41,7 @@ const Select = ({
   console.dir({ label, placeholder, value, props })
   
   return (
-      <div className={`w-full max-w-xs mx-auto ${classNameWrapper}`}>
+      <div className={`w-full ${classNameWrapper}`}>
         <Listbox
           {...props}
           as="div"
