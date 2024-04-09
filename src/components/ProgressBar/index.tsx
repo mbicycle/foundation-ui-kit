@@ -10,7 +10,7 @@ type ProgressBarProps = {
 } & ComponentWithClassProps;
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress, size = 'default', className = '' }) => {
-  let barHeight = '';
+  let barHeight;
   switch (size) {
     case 'small':
       barHeight = 'h-1.5';

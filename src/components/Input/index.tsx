@@ -16,7 +16,6 @@ export function Input({
                           type,
                           id,
                           label,
-                          placeholder,
                           inputClasses = '',
                           wrapperClasses = '',
                           multiline = false,
