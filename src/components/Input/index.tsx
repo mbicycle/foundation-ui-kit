@@ -4,7 +4,6 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLT
     type?: 'text' | 'tel' | 'url' | 'email' | 'password' | 'number';
     id?: string;
     label?: string;
-    placeholder?: string;
     inputClasses?: string;
     wrapperClasses?: string;
     multiline?: boolean;
@@ -38,16 +37,12 @@ export function Input({
             <InputComponent
                 type={type}
                 id={id}
-                className={`bg-gray-50 border 
-                ${error ? 'border-red-500' : 'border-gray-300'} 
-                text-gray-900 rounded-lg
+                className={`${error ? 'border-red-500' : 'border-gray-300'} 
+                bg-transparent border text-gray-900 rounded-lg block w-full p-2.5 resize-none
                 focus:ring-blue-500 focus:border-blue-500
-                block w-full p-2.5 resize-none
+                disabled:bg-gray-100 autofill:bg-transparent
                 ${multiline ? "min-h-28" : ""}
                 ${inputClasses}`}
-                placeholder={placeholder}
-                required
-
                 {...rest}
             />
             {helperText && (

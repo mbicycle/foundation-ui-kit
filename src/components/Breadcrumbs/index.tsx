@@ -33,8 +33,6 @@ export function Breadcrumb({
     return  connector;
   }
 
-  console.log(activeStep)
-
   return (
     <nav className={`flex ${classNameWrapper}`}  {...rest}>
       <ol className="inline-flex items-center space-x-2 md:space-x-4 rtl:space-x-reverse">

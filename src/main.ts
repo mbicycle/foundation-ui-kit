@@ -15,3 +15,4 @@ export { default as Toggle } from "components/Toggle";
 export { default as Tooltip } from "components/Tooltip";
 export { default as Select } from "components/Select";
 export { default as Autocomplete } from "components/Autocomplete";
+export { default as Divider } from "components/Divider";

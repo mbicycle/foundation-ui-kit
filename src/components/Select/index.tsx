@@ -37,8 +37,6 @@ const Select = ({
                 }: SelectProps) => {
 
   const selectedItem = options.find((item) => item.id === value);
-
-  console.dir({ label, placeholder, value, props })
   
   return (
       <div className={`w-full ${classNameWrapper}`}>
