@@ -55,13 +55,14 @@ const AutocompleteSelect = ({
       )}
       <Combobox value={value} onChange={onChange}>
         <div className="relative mt-1">
-          <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md sm:text-sm">
+          <div className="relative w-full cursor-default overflow-hidden">
             <Combobox.Input
-              className={`
-               w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900
-               focus:ring-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-400
-               ${classNameInput}
-               `}
+              className={`w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left
+                          focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+                          transition ease-in-out duration-150
+                          disabled:bg-gray-100 disabled:text-gray-400
+                          ${classNameInput}
+                          `}
               displayValue={(selectedId: string) => {
                 const selectedValue = options.find((item) => item.id === selectedId)
                 return selectedValue?.name || placeholder
