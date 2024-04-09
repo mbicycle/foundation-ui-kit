@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from 'components/Button';
+import { ArrowUpOnSquareIcon } from '@heroicons/react/24/outline';
 
 const meta: Meta = {
   title: 'Example/Button',
@@ -18,18 +19,6 @@ const meta: Meta = {
       control: { type: 'inline-radio', options: ['small', 'medium', 'large'] },
     },
     isDisabled: {
-      control: 'boolean',
-    },
-    uppercase: {
-      control: {
-        type: 'boolean',
-        defaultValue: false,
-      },
-    },
-    isExport: {
-      control: 'boolean',
-    },
-    isAdd: {
       control: 'boolean',
     },
   },
@@ -107,18 +96,6 @@ export const LargeButton: Story = {
   },
 };
 
-export const UppercaseButton: Story = {
-  args: {
-    children: 'Uppercase Text',
-    uppercase: true,
-  },
-  parameters: {
-    style: {
-      margin: '30px',
-    },
-  },
-};
-
 export const PrimaryButton: Story = {
   args: {
     children: 'Primary',
@@ -179,10 +156,10 @@ export const OutlineButton: Story = {
   },
 };
 
-export const ExportButton: Story = {
+export const LoadingButton: Story = {
   args: {
     children: 'Export',
-    isExport: true,
+    isLoading: true,
   },
   parameters: {
     style: {
@@ -191,10 +168,10 @@ export const ExportButton: Story = {
   },
 };
 
-export const AddButton: Story = {
+export const IconButton: Story = {
   args: {
-    children: 'Add',
-    isAdd: true,
+    children: 'Export',
+    icon: ArrowUpOnSquareIcon
   },
   parameters: {
     style: {

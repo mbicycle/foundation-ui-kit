@@ -10,7 +10,7 @@ type ProgressBarProps = {
 } & ComponentWithClassProps;
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress, size = 'default', className = '' }) => {
-  let barHeight = '';
+  let barHeight;
   switch (size) {
     case 'small':
       barHeight = 'h-1.5';
@@ -27,9 +27,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress, size = 'default', c
   }
 
   return (
-      <div className={`w-full bg-gray-200 rounded-full ${barHeight} dark:bg-gray-700 ${className}`}>
+      <div className={`w-full bg-gray-200 rounded-full ${barHeight} ${className}`}>
         <div
-            className={`bg-blue-600 rounded-full dark:bg-blue-500 ${barHeight}`}
+            className={`bg-blue-600 rounded-full ${barHeight}`}
             style={{ width: `${progress}%` }}
         />
       </div>
