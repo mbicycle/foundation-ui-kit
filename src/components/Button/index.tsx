@@ -43,7 +43,7 @@ export function Button({
 
     return (
         <button className={`${Object.values(buttonClasses).join(' ')} ${className}`} disabled={isDisabled} {...rest}>
-            {IconComponent && <IconComponent className={`size-6 mr-2 mb-0.5 ${classNameIcon}`} />}
+            {IconComponent && <IconComponent className={`size-6 mr-2 ${classNameIcon}`} />}
             {children}
         </button>
     );
