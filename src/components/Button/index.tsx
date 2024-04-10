@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import { SpinnerIcon } from "components/Button/icon";
 
 type ButtonSize = 'small' | 'medium' | 'large';
@@ -15,11 +15,6 @@ export type ButtonProps = {
   classNameIcon?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-type ToggleProps = {
-  checked?: boolean;
-  color?: 'blue' | 'red' | 'yellow';
-  className?: string;
-} & InputHTMLAttributes<HTMLInputElement>;
 
 export function Button({
                          children,
@@ -47,30 +42,9 @@ export function Button({
             {children}
         </button>
     );
-
-
 }
 
-export function Toggle({
-                         checked = false,
-                         color = 'blue',
-                         className = '',
-                         ...rest
-                       }: ToggleProps) {
-  const toggleClasses = {
-    base: 'rounded-full px-4 py-2 transition-all duration-300',
-    color: getColorClass(color),
-  };
 
-  return (
-      <input
-          type="checkbox"
-          checked={checked}
-          className={`${Object.values(toggleClasses).join(' ')} ${className}`}
-          {...rest}
-      />
-  );
-}
 
 const sizeClasses: Record<ButtonSize, string> = {
   'small': 'text-sm',
@@ -93,15 +67,3 @@ const getVariantClass = (variant?: "primary" | "warning" | "transparent" | "empt
   return isDisabled ? `${baseClass} bg-gray-300` : baseClass;
 };
 
-const getColorClass = (color: "blue" | "red" | "yellow" | undefined): string => {
-  switch (color) {
-    case 'blue':
-      return 'bg-blue-500 hover:bg-blue-400';
-    case 'red':
-      return 'bg-red-500 hover:bg-red-400';
-    case 'yellow':
-      return 'bg-yellow-500 hover:bg-yellow-400';
-    default:
-      return '';
-  }
-};
