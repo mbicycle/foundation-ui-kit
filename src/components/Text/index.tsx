@@ -32,7 +32,7 @@ const textVariants: Record<TextVariant, string> = {
 const Text: React.FC<TextProps> = ({ variant, children, className }: {variant?: TextVariant, children: any, className?: string}) => {
     const textStyle = (variant && textVariants[variant]) || '';
 
-    const combinedClassName = `${className} ${textStyle}`.trim();
+    const combinedClassName = `${textStyle} ${className}`.trim();
 
     return <span className={combinedClassName}>{children}</span>;
 };
