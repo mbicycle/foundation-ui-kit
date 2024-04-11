@@ -1,8 +1,7 @@
-import { InputHTMLAttributes } from 'react';
+import { ForwardedRef, forwardRef, InputHTMLAttributes, RefObject } from 'react';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement > {
     type?: 'text' | 'tel' | 'url' | 'email' | 'password' | 'number';
-    id?: string;
     label?: string;
     inputClasses?: string;
     wrapperClasses?: string;
@@ -12,7 +11,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLT
     error?: boolean;
 }
 
-export function Input({
+export const Input = forwardRef(({
                           type,
                           id,
                           label,
@@ -23,7 +22,7 @@ export function Input({
                           helperTextClassName = '',
                           error,
                           ...rest
-                      }: InputProps) {
+                      }: InputProps, ref: ForwardedRef<HTMLInputElement | HTMLTextAreaElement>) => {
     const InputComponent = multiline ? 'textarea' : 'input';
 
     return (
@@ -35,7 +34,6 @@ export function Input({
             )}
             <InputComponent
                 type={type}
-                id={id}
                 className={`${error ? 'border-red-500' : 'border-gray-300'} 
                 bg-transparent border text-gray-900 rounded-lg block w-full p-2.5 resize-none
                 focus:ring-blue-500 focus:border-blue-500
@@ -43,6 +41,7 @@ export function Input({
                 ${multiline ? "min-h-28" : ""}
                 ${inputClasses}`}
                 {...rest}
+                ref={ref as RefObject<HTMLTextAreaElement> & RefObject<HTMLInputElement>}
             />
             {helperText && (
                 <span className={`block mt-1 text-sm text-gray-500 
@@ -54,4 +53,4 @@ export function Input({
             )}
         </div>
     );
-}
+})
