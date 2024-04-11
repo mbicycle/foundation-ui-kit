@@ -1,9 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Accordion from '../components/Accordion';
 
+
 const meta: Meta = {
   title: 'Example/Accordion',
   component: Accordion,
+  subcomponents: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    AccordionBody:Accordion.Body,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    AccordionTitle: Accordion.Title
+  },
   parameters: {
     controls: { hideNoControlsWarning: true },
   },
@@ -30,6 +39,11 @@ const RenderAccordion = (props: any) => {
 };
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      source: { language: 'tsx' },
+    },
+  },
   args: {
     defaultOpen: true,
   },
