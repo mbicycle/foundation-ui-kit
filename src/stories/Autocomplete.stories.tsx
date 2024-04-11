@@ -54,4 +54,32 @@ export const Default: Story = {
     label: "Simple select",
     placeholder: 'Select an option...',
   },
+  parameters: {
+    docs: {
+      source: {
+        language: 'tsx',
+        type: 'auto',
+        transform: () => {
+          return (
+            `
+const options = [
+  {id: '1', name: 'JavaScript'},
+  {id: '2', name: 'TypeScript'},
+  {id: '3', name: 'Java'},
+  {id: '4', name: 'C++'},
+];
+
+const [selected, setSelected] = useState<string | null>(null);
+
+return <Autocomplete
+        value={selected}
+        onChange={setSelected}
+        options={options}
+        {...props}
+        />
+        `)
+        }
+      },
+    },
+  },
 };

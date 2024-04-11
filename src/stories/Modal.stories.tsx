@@ -41,5 +41,31 @@ export const Default: Story = {
   args: {
     title: 'Modal Title',
   },
-  render: (args) => <ModalWithButton {...args} />
+  render: (args) => <ModalWithButton {...args} />,
+  parameters: {
+    docs: {
+      source: {
+        language: 'tsx',
+        excludeDecorators: true,
+        type: 'auto',
+        transform: () => {
+          return (
+            `
+  const [open, setOpen] = useState(false)
+
+  return (
+    <div>
+      <Button onClick={() => setOpen(!open)}>Open modal</Button>
+      
+      <Modal {...props} open={open} onClose={() => setOpen(false)}>
+        <span className="text-red-600">Styled Modal children</span>}
+      </Modal>
+    </div>
+  )
+            `
+          )
+        }
+      },
+    },
+  },
 };

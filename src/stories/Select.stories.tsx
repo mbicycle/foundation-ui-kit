@@ -69,6 +69,36 @@ export const Default: Story = {
     label: "Simple select",
     placeholder: 'Select an option...',
   },
+  parameters: {
+    docs: {
+      source: {
+        language: 'tsx',
+        excludeDecorators: true,
+        type: 'auto',
+        transform: () => {
+          return (
+            `
+const options = [
+  {id: '1', name: 'Option 1'},
+  {id: '2', name: 'Option 2'},
+  {id: '3', name: 'Option 3'},
+  {id: '4', name: 'Option 4'},
+];
+
+const [selected, setSelected] = useState<string | null>(null);
+
+return <Select
+    value={selected}
+    onChange={setSelected}
+    options={options}
+    {...props}
+  />;
+            `
+          )
+        }
+      },
+    },
+  },
 };
 
 export const Multiple: Story = {

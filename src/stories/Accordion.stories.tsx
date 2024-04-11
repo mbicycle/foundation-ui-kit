@@ -41,7 +41,21 @@ const RenderAccordion = (props: any) => {
 export const Default: Story = {
   parameters: {
     docs: {
-      source: { language: 'tsx' },
+      source: {
+        language: 'tsx',
+        excludeDecorators: true,
+        type: 'auto',
+        transform: () => {
+          return (
+            `<Accordion defaultOpen={true} {...props}>
+  <Accordion.Title className="text-blue-500">Accordion Title</Accordion.Title>
+  <Accordion.Body>
+    <p>Accordion Body</p>
+  </Accordion.Body>
+</Accordion>`
+          )
+        }
+      },
     },
   },
   args: {

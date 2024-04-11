@@ -37,6 +37,37 @@ export const Default: Story = {
   args: {
     routes,
   },
-  render: (args) => <BreadcrumbsWithHooks {...args} />
+  render: (args) => <BreadcrumbsWithHooks {...args} />,
+  parameters: {
+    docs: {
+      source: {
+        language: 'tsx',
+        excludeDecorators: true,
+        type: 'auto',
+        transform: () => {
+          return (
+            `const [step, setStep] = useState(0)
+
+const onClick = ({index}: {index: number}) => {
+  setStep(index)
+}
+
+const routes = [
+  {route: '1', text: 'Home'},
+  {route: '2', text: 'Projects'},
+  {route: '3', text: 'About'},
+]
+
+return  <Breadcrumb
+        {...props}
+        activeStep={step}
+        routes={routes}
+        onClickStep={onClick}
+        />`
+          )
+        }
+      },
+    },
+  },
 };
 
