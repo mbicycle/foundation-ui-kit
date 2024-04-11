@@ -1,4 +1,5 @@
 import { Listbox, Transition } from "@headlessui/react";
+import { ForwardedRef, forwardRef } from "react";
 
 export type Option = {
   id: string
@@ -22,7 +23,7 @@ export interface SelectProps {
   classNameListOption?: string;
 }
 
-const Select = ({
+const Select = forwardRef(({
                   onChange,
                   value,
                   options,
@@ -34,7 +35,7 @@ const Select = ({
                   classNameInput = '',
                   classNameListOption = '',
                   ...props
-                }: SelectProps) => {
+                }: SelectProps, ref: ForwardedRef<HTMLInputElement>) => {
 
   const selectedItem = options.find((item) => item.id === value);
   
@@ -42,6 +43,7 @@ const Select = ({
       <div className={`w-full ${classNameWrapper}`}>
         <Listbox
           {...props}
+          ref={ref}
           as="div"
           className="space-y-1"
           value={value || null}
@@ -145,6 +147,6 @@ const Select = ({
         </Listbox>
       </div>
   );
-};
+});
 
 export default Select;

@@ -1,6 +1,6 @@
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid';
-import { Fragment, useMemo, useState } from "react";
+import { ForwardedRef, forwardRef, Fragment, useMemo, useState } from "react";
 
 export type Option = {
   id: string
@@ -23,7 +23,7 @@ export interface AutocompleteSelectProps {
   classNameListOption?: string;
 }
 
-const AutocompleteSelect = ({
+const AutocompleteSelect = forwardRef(({
                   onChange,
                   value,
                   options,
@@ -34,7 +34,7 @@ const AutocompleteSelect = ({
                   classNameLabel = '',
                   classNameInput = '',
                   classNameListOption = '',
-                }: AutocompleteSelectProps) => {
+                }: AutocompleteSelectProps, ref: ForwardedRef<HTMLInputElement>) => {
 
   const [query, setQuery] = useState('');
 
@@ -57,6 +57,7 @@ const AutocompleteSelect = ({
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden">
             <Combobox.Input
+              ref={ref}
               className={`w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left
                           focus:outline-none focus:shadow-outline-blue focus:border-blue-300
                           transition ease-in-out duration-150
@@ -128,6 +129,6 @@ const AutocompleteSelect = ({
       </Combobox>
     </div>
   );
-};
+});
 
 export default AutocompleteSelect;

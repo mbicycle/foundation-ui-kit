@@ -58,7 +58,7 @@ export const Body = ({children, className = ''}: AccordionBodyProps) => {
 
 const Accordion: React.FC<AccordionProps> & Extensions = ({ children, defaultOpen = false }) => {
     return (
-          <Disclosure defaultOpen={defaultOpen}>
+          <Disclosure as="div" defaultOpen={defaultOpen}>
               {children}
           </Disclosure>
     );
