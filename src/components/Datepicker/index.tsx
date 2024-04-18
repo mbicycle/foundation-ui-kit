@@ -50,7 +50,7 @@ const Datepicker = forwardRef(({
                 type="text"
                 inputClasses={inputClasses}
                 placeholder="Enter Date"
-                icon={<CalendarDaysIcon className="size-6" />}
+                icon={<CalendarDaysIcon className="size-6 text-gray-600" />}
                 ref={ref}
                 error={error}
                 {...inputProps}

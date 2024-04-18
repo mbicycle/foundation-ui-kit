@@ -1,6 +1,6 @@
-import { ForwardedRef, forwardRef, InputHTMLAttributes, RefObject } from 'react';
+import {ForwardedRef, forwardRef, InputHTMLAttributes, RefObject} from 'react';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement > {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
     type?: 'text' | 'tel' | 'url' | 'email' | 'password' | 'number';
     icon?: React.ReactNode;
     label?: string;
@@ -13,18 +13,18 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLT
 }
 
 export const Input = forwardRef(({
-                          type,
-                          id,
-                          label,
-                          icon,
-                          inputClasses = '',
-                          wrapperClasses = '',
-                          multiline = false,
-                          helperText,
-                          helperTextClassName = '',
-                          error,
-                          ...rest
-                      }: InputProps, ref: ForwardedRef<HTMLInputElement | HTMLTextAreaElement>) => {
+                                     id,
+                                     label,
+                                     icon,
+                                     helperText,
+                                     error,
+                                     type = 'text',
+                                     multiline = false,
+                                     inputClasses = '',
+                                     wrapperClasses = '',
+                                     helperTextClassName = '',
+                                     ...rest
+                                 }: InputProps, ref: ForwardedRef<HTMLInputElement | HTMLTextAreaElement>) => {
     const InputComponent = multiline ? 'textarea' : 'input';
 
     return (
