@@ -57,7 +57,7 @@ const options = [
   {id: '1', name: 'JavaScript'},
   {id: '2', name: 'TypeScript'},
   {id: '3', name: 'Java'},
-  {id: '4', name: 'C++'},
+  {id: '4', name: 'C++'}
 ];
 
 const [selected, setSelected] = useState<string | null>(null);

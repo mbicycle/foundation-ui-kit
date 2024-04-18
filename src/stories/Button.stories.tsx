@@ -18,7 +18,7 @@ const meta: Meta = {
     size: {
       control: { type: "inline-radio", options: ["small", "medium", "large"] },
     },
-    isDisabled: {
+    disabled: {
       control: "boolean",
     },
   },
@@ -51,7 +51,7 @@ export const Standard: Story = {
 export const DisabledButton: Story = {
   args: {
     children: "Disabled",
-    isDisabled: true,
+    disabled: true,
   },
   parameters: {
     style: {

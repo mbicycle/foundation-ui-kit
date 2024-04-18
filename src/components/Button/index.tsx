@@ -8,7 +8,6 @@ type ButtonVariant = "primary" | "warning" | "transparent" | "empty" | "outline"
 export type ButtonProps = {
   children: React.ReactNode
   icon?: React.ElementType
-  isDisabled?: boolean
   size?: ButtonSize
   variant?: ButtonVariant
   isLoading?: boolean
@@ -20,7 +19,7 @@ export function Button({
   children,
   icon,
   type = "button",
-  isDisabled = false,
+  disabled = false,
   size = "medium",
   variant = "primary",
   isLoading = false,
@@ -31,8 +30,8 @@ export function Button({
   const buttonClasses = {
     base: "px-4 py-2 rounded-md flex items-center justify-center transition-all duration-300",
     size: getSizeClass(size),
-    variant: getVariantClass(variant, isDisabled),
-    disabled: isDisabled ? "cursor-not-allowed pointer-events-none" : "",
+    variant: getVariantClass(variant, disabled),
+    disabled: disabled ? "cursor-not-allowed pointer-events-none" : "",
   }
 
   const IconComponent = isLoading ? SpinnerIcon : icon
@@ -41,7 +40,7 @@ export function Button({
     <button
       type={type}
       className={`${Object.values(buttonClasses).join(" ")} ${className}`}
-      disabled={isDisabled}
+      disabled={disabled}
       {...rest}
     >
       {IconComponent && <IconComponent className={stringTrim(`mr-2 size-6 ${classNameIcon}`)} />}
@@ -69,8 +68,8 @@ const variantClasses: Record<ButtonVariant, string> = {
 
 const getVariantClass = (
   variant?: "primary" | "warning" | "transparent" | "empty" | "outline",
-  isDisabled?: boolean,
+  disabled?: boolean,
 ): string => {
   const baseClass = (variant && variantClasses[variant]) || ""
-  return isDisabled ? `${baseClass} bg-gray-300` : baseClass
+  return disabled ? `${baseClass} bg-gray-300` : baseClass
 }
