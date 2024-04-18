@@ -31,6 +31,9 @@
       ],
       "stories/*": [
         "stories/*"
+      ],
+      "utils/*": [
+        "utils/*"
       ]
     }
   },

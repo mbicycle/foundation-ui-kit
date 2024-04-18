@@ -1,181 +1,181 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from 'components/Button';
-import { ArrowUpOnSquareIcon } from '@heroicons/react/24/outline';
+import type { Meta, StoryObj } from "@storybook/react"
+import { Button } from "components/Button"
+import { ArrowUpOnSquareIcon } from "@heroicons/react/24/outline"
 
 const meta: Meta = {
-  title: 'Example/Button',
+  title: "Example/Button",
   component: Button,
   argTypes: {
     children: {
-      control: 'text',
+      control: "text",
     },
     variant: {
-      options: ['primary', 'warning', 'transparent', 'empty', 'outline'],
+      options: ["primary", "warning", "transparent", "empty", "outline"],
       control: {
-        type: 'select',
+        type: "select",
       },
     },
     size: {
-      control: { type: 'inline-radio', options: ['small', 'medium', 'large'] },
+      control: { type: "inline-radio", options: ["small", "medium", "large"] },
     },
     isDisabled: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
   args: {
-    children: 'Press me',
+    children: "Press me",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Standard: Story = {
   args: {
-    children: 'Press me',
+    children: "Press me",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const DisabledButton: Story = {
   args: {
-    children: 'Disabled',
+    children: "Disabled",
     isDisabled: true,
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const SmallButton: Story = {
   args: {
-    children: 'Small',
-    size: 'small',
+    children: "Small",
+    size: "small",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const MediumButton: Story = {
   args: {
-    children: 'Medium',
-    size: 'medium',
+    children: "Medium",
+    size: "medium",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const LargeButton: Story = {
   args: {
-    children: 'Large',
-    size: 'large',
+    children: "Large",
+    size: "large",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const PrimaryButton: Story = {
   args: {
-    children: 'Primary',
-    variant: 'primary',
+    children: "Primary",
+    variant: "primary",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const WarningButton: Story = {
   args: {
-    children: 'Warning',
-    variant: 'warning',
+    children: "Warning",
+    variant: "warning",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const TransparentButton: Story = {
   args: {
-    children: 'Transparent',
-    variant: 'transparent',
+    children: "Transparent",
+    variant: "transparent",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const EmptyButton: Story = {
   args: {
-    children: 'Empty',
-    variant: 'empty',
+    children: "Empty",
+    variant: "empty",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const OutlineButton: Story = {
   args: {
-    children: 'Outline',
-    variant: 'outline',
+    children: "Outline",
+    variant: "outline",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const LoadingButton: Story = {
   args: {
-    children: 'Export',
+    children: "Export",
     isLoading: true,
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const IconButton: Story = {
   args: {
-    children: 'Export',
-    icon: ArrowUpOnSquareIcon
+    children: "Export",
+    icon: ArrowUpOnSquareIcon,
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}

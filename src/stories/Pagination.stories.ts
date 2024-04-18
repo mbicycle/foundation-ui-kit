@@ -1,32 +1,32 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Pagination from '../components/Pagination';
+import type { Meta, StoryObj } from "@storybook/react"
+import Pagination from "../components/Pagination"
 
 const meta: Meta = {
-  title: 'Example/Pagination',
+  title: "Example/Pagination",
   component: Pagination,
   argTypes: {
     variant: {
-      options: ['small', 'large'],
+      options: ["small", "large"],
       control: {
-        type: 'inline-radio',
+        type: "inline-radio",
       },
     },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const SmallPagination: Story = {
   args: {
-    variant: 'small',
+    variant: "small",
   },
-};
+}
 
 export const LargePagination: Story = {
   args: {
-    variant: 'large',
+    variant: "large",
   },
-};
+}

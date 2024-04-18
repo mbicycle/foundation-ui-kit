@@ -1,5 +1,5 @@
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Dialog, Transition } from "@headlessui/react"
+import { Fragment } from "react"
 
 export type ModalProps = {
   children: React.ReactNode
@@ -8,18 +8,10 @@ export type ModalProps = {
   title?: string
   classNameContent?: string
   classNameTitle?: string
-};
+}
 
 const Modal = (props: ModalProps) => {
-  const {
-    open,
-    onClose,
-    title = '',
-    classNameTitle = '',
-    classNameContent = '',
-    children
-  } = props;
-
+  const { open, onClose, title = "", classNameTitle = "", classNameContent = "", children } = props
 
   return (
     <Transition appear show={open} as={Fragment}>
@@ -48,14 +40,13 @@ const Modal = (props: ModalProps) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`min-w-[420px] transform rounded-2xl bg-white py-6 px-10 text-left align-middle shadow-xl transition-all ${classNameContent}`}
+                className={`min-w-[420px] transform rounded-2xl bg-white px-10 py-6 text-left align-middle shadow-xl transition-all ${classNameContent}`}
               >
-                {title && <Dialog.Title
-                  as="h3"
-                  className={`text-lg font-medium leading-6 text-gray-900 ${classNameTitle}`}
-                >
-                  {title}
-                </Dialog.Title>}
+                {title && (
+                  <Dialog.Title as="h3" className={`text-lg font-medium leading-6 text-gray-900 ${classNameTitle}`}>
+                    {title}
+                  </Dialog.Title>
+                )}
                 {children}
               </Dialog.Panel>
             </Transition.Child>
@@ -63,7 +54,7 @@ const Modal = (props: ModalProps) => {
         </div>
       </Dialog>
     </Transition>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

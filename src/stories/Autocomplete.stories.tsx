@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Autocomplete from '../components/Autocomplete';
-import { useState } from "react";
-
+import type { Meta, StoryObj } from "@storybook/react"
+import Autocomplete from "../components/Autocomplete"
+import { useState } from "react"
 
 const meta: Meta = {
-  title: 'Example/Autocomplete',
+  title: "Example/Autocomplete",
   component: Autocomplete,
   parameters: {
     controls: { hideNoControlsWarning: true },
@@ -20,48 +19,40 @@ const meta: Meta = {
       control: false,
     },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
-
+type Story = StoryObj<typeof meta>
 
 const options = [
-  {id: '1', name: 'JavaScript'},
-  {id: '2', name: 'TypeScript'},
-  {id: '3', name: 'Java'},
-  {id: '4', name: 'C++'},
-];
+  { id: "1", name: "JavaScript" },
+  { id: "2", name: "TypeScript" },
+  { id: "3", name: "Java" },
+  { id: "4", name: "C++" },
+]
 
 const AutocompleteWithHooks = (props: any) => {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string | null>(null)
 
-  return <Autocomplete
-    value={selected}
-    onChange={setSelected}
-    options={options}
-    {...props}
-  />;
-};
-
+  return <Autocomplete value={selected} onChange={setSelected} options={options} {...props} />
+}
 
 export const Default: Story = {
-  render:  (args) => <AutocompleteWithHooks {...args} />,
+  render: (args) => <AutocompleteWithHooks {...args} />,
   args: {
     options,
     label: "Simple select",
-    placeholder: 'Select an option...',
+    placeholder: "Select an option...",
   },
   parameters: {
     docs: {
       source: {
-        language: 'tsx',
-        type: 'auto',
+        language: "tsx",
+        type: "auto",
         transform: () => {
-          return (
-            `
+          return `
 const options = [
   {id: '1', name: 'JavaScript'},
   {id: '2', name: 'TypeScript'},
@@ -77,9 +68,9 @@ return <Autocomplete
         options={options}
         {...props}
         />
-        `)
-        }
+        `
+        },
       },
     },
   },
-};
+}

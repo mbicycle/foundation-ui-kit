@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Modal from '../components/Modal';
-import { useState } from "react";
-import { Button } from "components/Button";
+import type { Meta, StoryObj } from "@storybook/react"
+import Modal from "../components/Modal"
+import { useState } from "react"
+import { Button } from "components/Button"
 
 const meta: Meta = {
-  title: 'Example/Modal',
+  title: "Example/Modal",
   component: Modal,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     open: {
       control: false,
@@ -17,12 +17,12 @@ const meta: Meta = {
     children: {
       control: "text",
     },
-  }
-};
+  },
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 const ModalWithButton = (props: any) => {
   const [open, setOpen] = useState(false)
@@ -39,18 +39,17 @@ const ModalWithButton = (props: any) => {
 
 export const Default: Story = {
   args: {
-    title: 'Modal Title',
+    title: "Modal Title",
   },
   render: (args) => <ModalWithButton {...args} />,
   parameters: {
     docs: {
       source: {
-        language: 'tsx',
+        language: "tsx",
         excludeDecorators: true,
-        type: 'auto',
+        type: "auto",
         transform: () => {
-          return (
-            `
+          return `
   const [open, setOpen] = useState(false)
 
   return (
@@ -63,9 +62,8 @@ export const Default: Story = {
     </div>
   )
             `
-          )
-        }
+        },
       },
     },
   },
-};
+}

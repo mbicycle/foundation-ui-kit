@@ -1,40 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Spinner from '../components/Spinner';
+import type { Meta, StoryObj } from "@storybook/react"
+import Spinner from "../components/Spinner"
 
 const meta: Meta = {
-  title: 'Example/Spinner',
+  title: "Example/Spinner",
   component: Spinner,
   argTypes: {
     size: {
-      options: ['small', 'large', 'extra-large'],
-      control: { type: 'select' },
+      options: ["small", "large", "extra-large"],
+      control: { type: "select" },
     },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {},
-};
+}
 
 export const SmallSpinner: Story = {
   args: {
-    size: 'small',
+    size: "small",
   },
-};
+}
 
 export const LargeSpinner: Story = {
   args: {
-    size: 'large',
+    size: "large",
   },
-};
+}
 
 export const ExtraLargeSpinner: Story = {
   args: {
-    size: 'extra-large',
+    size: "extra-large",
   },
-};
+}
