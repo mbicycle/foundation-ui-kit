@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { CategorySearch } from "../components/CategorySearch"
+import { CategorySearch } from "components/CategorySearch"
 
 const meta: Meta = {
   title: "Example/CategorySearch",
