@@ -8,17 +8,23 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended"
   ],
-  "ignorePatterns":[
-    "dist",
-    ".eslintrc.cjs"
-  ],
+  "ignorePatterns": ["dist", ".eslintrc.json", "*.config.*"],
   "parser":"@typescript-eslint/parser",
   "plugins":[
     "react-refresh"
   ],
   "rules":{
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "indent": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "react-refresh/only-export-components":[
       "warn",

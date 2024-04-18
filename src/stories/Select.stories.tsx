@@ -1,10 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Select from '../components/Select';
-import { useState } from "react";
-
+import type { Meta, StoryObj } from "@storybook/react"
+import Select from "components/Select"
+import { useState } from "react"
 
 const meta: Meta = {
-  title: 'Example/Select',
+  title: "Example/Select",
   component: Select,
   parameters: {
     controls: { hideNoControlsWarning: true },
@@ -23,61 +22,47 @@ const meta: Meta = {
       control: false,
     },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
-
+type Story = StoryObj<typeof meta>
 
 const options = [
-  {id: '1', name: 'Option 1'},
-  {id: '2', name: 'Option 2'},
-  {id: '3', name: 'Option 3'},
-  {id: '4', name: 'Option 4'},
-];
+  { id: "1", name: "Option 1" },
+  { id: "2", name: "Option 2" },
+  { id: "3", name: "Option 3" },
+  { id: "4", name: "Option 4" },
+]
 
 const SelectWithHooks = (props: any) => {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string | null>(null)
 
-  return <Select
-    value={selected}
-    onChange={setSelected}
-    options={options}
-    {...props}
-  />;
-};
+  return <Select value={selected} onChange={setSelected} options={options} {...props} />
+}
 
 const SelectWithHooksAndMultipleChooses = (props: any) => {
-  const [selected, setSelected] = useState([options[0].id]);
+  const [selected, setSelected] = useState([options[0].id])
 
-
-  return <Select
-    value={selected}
-    onChange={setSelected}
-    options={options}
-    multiple
-    {...props}
-  />;
-};
+  return <Select value={selected} onChange={setSelected} options={options} multiple {...props} />
+}
 
 export const Default: Story = {
-  render:  (args) => <SelectWithHooks {...args} />,
+  render: (args) => <SelectWithHooks {...args} />,
   args: {
     options,
     label: "Simple select",
-    placeholder: 'Select an option...',
+    placeholder: "Select an option...",
   },
   parameters: {
     docs: {
       source: {
-        language: 'tsx',
+        language: "tsx",
         excludeDecorators: true,
-        type: 'auto',
+        type: "auto",
         transform: () => {
-          return (
-            `
+          return `
 const options = [
   {id: '1', name: 'Option 1'},
   {id: '2', name: 'Option 2'},
@@ -94,17 +79,16 @@ return <Select
     {...props}
   />;
             `
-          )
-        }
+        },
       },
     },
   },
-};
+}
 
 export const Multiple: Story = {
-  render:  (args) => <SelectWithHooksAndMultipleChooses {...args} />,
+  render: (args) => <SelectWithHooksAndMultipleChooses {...args} />,
   args: {
     options,
-    placeholder: 'Select multiple options...',
+    placeholder: "Select multiple options...",
   },
-};
+}

@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Link from '../components/Link';
+import type { Meta, StoryObj } from "@storybook/react"
+import Link from "../components/Link"
 
 const meta: Meta = {
-  title: 'Example/Link',
+  title: "Example/Link",
   component: Link,
   parameters: {
     controls: { hideNoControlsWarning: true },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    href: '#',
-    children: 'Click me',
+    href: "#",
+    children: "Click me",
   },
-};
+}

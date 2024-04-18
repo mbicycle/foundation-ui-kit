@@ -1,65 +1,63 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Accordion from '../components/Accordion';
-
+import type { Meta, StoryObj } from "@storybook/react"
+import Accordion from "../components/Accordion"
 
 const meta: Meta = {
-  title: 'Example/Accordion',
+  title: "Example/Accordion",
   component: Accordion,
   subcomponents: {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    AccordionBody:Accordion.Body,
+    AccordionBody: Accordion.Body,
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    AccordionTitle: Accordion.Title
+    AccordionTitle: Accordion.Title,
   },
   parameters: {
     controls: { hideNoControlsWarning: true },
   },
   argTypes: {
     defaultOpen: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 const RenderAccordion = (props: any) => {
-
-  return <Accordion defaultOpen={true} {...props}>
-        <Accordion.Title className="text-blue-500">Accordion Title</Accordion.Title>
-        <Accordion.Body>
-          <p>Accordion Body</p>
-        </Accordion.Body>
-  </Accordion>
-};
+  return (
+    <Accordion defaultOpen={true} {...props}>
+      <Accordion.Title className="text-blue-500">Accordion Title</Accordion.Title>
+      <Accordion.Body>
+        <p>Accordion Body</p>
+      </Accordion.Body>
+    </Accordion>
+  )
+}
 
 export const Default: Story = {
   parameters: {
     docs: {
       source: {
-        language: 'tsx',
+        language: "tsx",
         excludeDecorators: true,
-        type: 'auto',
+        type: "auto",
         transform: () => {
-          return (
-            `<Accordion defaultOpen={true} {...props}>
+          return `<Accordion defaultOpen={true} {...props}>
   <Accordion.Title className="text-blue-500">Accordion Title</Accordion.Title>
   <Accordion.Body>
     <p>Accordion Body</p>
   </Accordion.Body>
 </Accordion>`
-          )
-        }
+        },
       },
     },
   },
   args: {
     defaultOpen: true,
   },
-  render: (args) => RenderAccordion(args)
-};
+  render: (args) => RenderAccordion(args),
+}

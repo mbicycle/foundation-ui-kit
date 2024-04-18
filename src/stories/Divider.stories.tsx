@@ -1,44 +1,43 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Divider from "components/Divider";
+import type { Meta, StoryObj } from "@storybook/react"
+import Divider from "components/Divider"
 
 const meta: Meta = {
-  title: 'Example/Divider',
+  title: "Example/Divider",
   component: Divider,
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
-
+}
 
 export const Horizontal: Story = {
   args: {
-    orientation: 'horizontal',
+    orientation: "horizontal",
   },
   parameters: {
     style: {
-      margin: '30px',
+      margin: "30px",
     },
   },
-};
+}
 
 export const Vertical: Story = {
   args: {
-    orientation: 'vertical',
+    orientation: "vertical",
   },
   parameters: {
     style: {
-      margin: '30px',
-      height: '10px'
+      margin: "30px",
+      height: "10px",
     },
   },
-};
+}

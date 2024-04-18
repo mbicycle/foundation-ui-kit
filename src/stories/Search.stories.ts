@@ -1,50 +1,50 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Search } from '../components/Search';
+import type { Meta, StoryObj } from "@storybook/react"
+import { Search } from "components/Search"
 
 const meta: Meta = {
-  title: 'Example/Search',
+  title: "Example/Search",
   component: Search,
   argTypes: {
     searchPlaceholder: {
-      control: 'text',
+      control: "text",
     },
     size: {
       control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
+        type: "select",
+        options: ["small", "medium", "large"],
       },
     },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    searchPlaceholder: 'Search',
+    searchPlaceholder: "Search",
   },
-};
+}
 
 export const SmallSize: Story = {
   args: {
-    size: 'small',
-    searchPlaceholder: 'Search',
+    size: "small",
+    searchPlaceholder: "Search",
   },
-};
+}
 
 export const MediumSize: Story = {
   args: {
-    size: 'medium',
-    searchPlaceholder: 'Search',
+    size: "medium",
+    searchPlaceholder: "Search",
   },
-};
+}
 
 export const LargeSize: Story = {
   args: {
-    size: 'large',
-    searchPlaceholder: 'Search',
+    size: "large",
+    searchPlaceholder: "Search",
   },
-};
+}

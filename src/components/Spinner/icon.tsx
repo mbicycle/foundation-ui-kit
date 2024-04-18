@@ -1,6 +1,6 @@
 type IconProps = {
-    className?: string;
-};
+  className?: string
+}
 
 const Icon: React.FC<IconProps> = ({ className }) => (
   <svg
@@ -19,6 +19,6 @@ const Icon: React.FC<IconProps> = ({ className }) => (
       fill="currentFill"
     />
   </svg>
-);
+)
 
-export default Icon;
+export default Icon

@@ -1,15 +1,15 @@
-import { AnchorHTMLAttributes } from 'react';
+import { AnchorHTMLAttributes } from "react"
 
 export type LinkProps = {
-  className?: string;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+  className?: string
+} & AnchorHTMLAttributes<HTMLAnchorElement>
 
-function Link({ children, className = '', ...rest }: LinkProps) {
+function Link({ children, className = "", ...rest }: LinkProps) {
   return (
-      <a className={`text-blue-500 hover:text-blue-700 ${className}`} {...rest}>
-        {children}
-      </a>
-  );
+    <a className={`text-blue-500 hover:text-blue-700 ${className}`} {...rest}>
+      {children}
+    </a>
+  )
 }
 
-export default Link;
+export default Link
