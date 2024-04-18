@@ -1,11 +1,11 @@
 import { ForwardedRef, forwardRef } from 'react';
-import DatePicker, {ReactDatePickerProps} from "react-datepicker";
+import DatePicker, { ReactDatePickerProps } from "react-datepicker";
 import {Input, InputProps} from "components/Input";
 import { CalendarDaysIcon } from "@heroicons/react/24/solid"
-import * as React from "react";
 
+import "react-datepicker/dist/react-datepicker.css";
 
-export interface DatepickerProps extends ReactDatePickerProps {
+export type DatepickerProps = {
   label?: string;
   inputClasses?: string;
   wrapperClasses?: string;
@@ -13,9 +13,9 @@ export interface DatepickerProps extends ReactDatePickerProps {
   helperTextClassName?: string;
   error?: boolean;
   inputProps?: InputProps
-}
+} & ReactDatePickerProps
 
-export const Datepicker = forwardRef(({
+const Datepicker = forwardRef(({
                                    selected,
                                    onChange,
                                    label,
@@ -70,3 +70,5 @@ export const Datepicker = forwardRef(({
       </div>
   );
 })
+
+export default Datepicker;

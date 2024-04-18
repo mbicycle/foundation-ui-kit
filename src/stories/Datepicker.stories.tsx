@@ -1,8 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import {useState} from "react";
-import {Datepicker} from "components/Datepicker";
-
-import "react-datepicker/dist/react-datepicker.css";
+import Datepicker from "components/Datepicker";
 
 
 const meta: Meta = {
