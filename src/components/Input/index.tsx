@@ -1,4 +1,5 @@
 import { ForwardedRef, forwardRef, InputHTMLAttributes, RefObject } from "react"
+import { stringTrim } from "utils/stringTrim"
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   type?: "text" | "tel" | "url" | "email" | "password" | "number"
@@ -42,20 +43,20 @@ export const Input = forwardRef(
         <InputComponent
           type={type}
           {...rest}
-          className={`${error ? "border-red-500" : "border-gray-300"} 
+          className={stringTrim(`${error ? " border-red-500 " : " border-gray-300 "} 
                 block w-full resize-none rounded-lg border bg-transparent p-2.5 text-gray-900 
                 autofill:bg-transparent focus:border-blue-500 focus:outline-none 
                 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-400 
-                ${multiline ? " min-h-28" : ""}
-                ${icon ? " ps-12" : ""}
-                ${inputClasses}`}
+                ${multiline ? " min-h-28 " : " "}
+                ${icon ? " ps-12 " : " "}
+                ${inputClasses}`)}
           ref={ref as RefObject<HTMLTextAreaElement> & RefObject<HTMLInputElement>}
         />
         {helperText && (
           <span
-            className={`absolute mt-1 block text-sm text-gray-500 
-                ${error ? " text-red-500" : " text-gray-500"}
-                 ${helperTextClassName}`}
+            className={stringTrim(`absolute mt-1 block text-sm text-gray-500 
+                ${error ? " text-red-500 " : " text-gray-500 "}
+                ${helperTextClassName}`)}
           >
             {helperText}
           </span>

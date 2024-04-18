@@ -4,6 +4,7 @@ import { Input, InputProps } from "components/Input"
 import { CalendarDaysIcon } from "@heroicons/react/24/solid"
 
 import "react-datepicker/dist/react-datepicker.css"
+import { stringTrim } from "utils/stringTrim"
 
 export type DatepickerProps = {
   label?: string
@@ -64,9 +65,9 @@ const Datepicker = forwardRef(
         />
         {helperText && (
           <span
-            className={`mt-1 block text-sm text-gray-500 
-                ${error ? "text-red-500" : "text-gray-500"}
-                 ${helperTextClassName}`}
+            className={stringTrim(`mt-1 block text-sm text-gray-500
+                ${error ? " text-red-500 " : " text-gray-500 "}
+                 ${helperTextClassName}`)}
           >
             {helperText}
           </span>

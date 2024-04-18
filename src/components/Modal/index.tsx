@@ -1,5 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment } from "react"
+import { stringTrim } from "utils/stringTrim"
 
 export type ModalProps = {
   children: React.ReactNode
@@ -40,10 +41,15 @@ const Modal = (props: ModalProps) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`min-w-[420px] transform rounded-2xl bg-white px-10 py-6 text-left align-middle shadow-xl transition-all ${classNameContent}`}
+                className={stringTrim(
+                  `min-w-[420px] transform rounded-2xl bg-white px-10 py-6 text-left align-middle shadow-xl transition-all ${classNameContent}`,
+                )}
               >
                 {title && (
-                  <Dialog.Title as="h3" className={`text-lg font-medium leading-6 text-gray-900 ${classNameTitle}`}>
+                  <Dialog.Title
+                    as="h3"
+                    className={stringTrim(`text-lg font-medium leading-6 text-gray-900 ${classNameTitle}`)}
+                  >
                     {title}
                   </Dialog.Title>
                 )}

@@ -1,5 +1,6 @@
 import { Listbox, Transition } from "@headlessui/react"
 import { CheckIcon } from "@heroicons/react/24/solid"
+import { stringTrim } from "utils/stringTrim"
 
 export type Option = {
   id: string
@@ -50,11 +51,11 @@ const Select = ({
           <div className="relative">
             <span className="inline-block w-full rounded-md">
               <Listbox.Button
-                className={`
+                className={stringTrim(`
                     block w-full resize-none rounded-lg border border-gray-300 bg-transparent p-2.5 text-left 
                     text-gray-900 autofill:bg-transparent focus:border-blue-500 
                     focus:outline-none focus:ring-blue-500 disabled:bg-gray-100 
-                     ${classNameInput}`}
+                     ${classNameInput}`)}
               >
                 <span className="block truncate">
                   {(Array.isArray(value) ? `Selected: ${value.length || 0}` : selectedItem?.name) || placeholder}
@@ -87,18 +88,21 @@ const Select = ({
                   <Listbox.Option key={item.id} value={item.id}>
                     {({ active, selected }) => (
                       <div
-                        className={`${
-                          active ? "bg-blue-600 text-white" : "text-gray-900"
-                        } relative cursor-default select-none py-2 pl-10 pr-4 ${classNameListOption}`}
+                        className={stringTrim(
+                          `${active ? "bg-blue-600 text-white " : "text-gray-900 "} 
+                          relative cursor-default select-none py-2 pl-10 pr-4 ${classNameListOption}`,
+                        )}
                       >
                         <span className={`${selected ? "font-semibold" : "font-normal"} block truncate text-base`}>
                           {item.name}
                         </span>
                         {selected && (
                           <span
-                            className={`${
-                              active ? "text-white" : "text-blue-600"
-                            } absolute inset-y-0 left-0 flex items-center pl-3`}
+                            className={stringTrim(
+                              `${
+                                active ? "text-white" : "text-blue-600"
+                              } absolute inset-y-0 left-0 flex items-center pl-3`,
+                            )}
                           >
                             <CheckIcon className="h-5 w-5" aria-hidden="true" />
                           </span>

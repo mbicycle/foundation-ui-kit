@@ -1,6 +1,7 @@
 import { Disclosure } from "@headlessui/react"
 import { ChevronDownIcon } from "@heroicons/react/24/solid"
 import React from "react"
+import { stringTrim } from "utils/stringTrim"
 
 export type AccordionBodyProps = {
   children: React.ReactNode
@@ -30,13 +31,15 @@ export const Title = ({ children, className = "", classNameIcon = "" }: Accordio
     <Disclosure.Button className="w-full">
       {({ open }) => (
         <div
-          className={`flex w-full items-center justify-between px-8 py-4 text-left text-sm font-medium 
-                ${open ? "rounded-t-lg border-x border-t" : "rounded-lg border shadow"} 
+          className={stringTrim(`flex w-full items-center justify-between px-8 py-4 text-left text-sm font-medium 
+                ${open ? " rounded-t-lg border-x border-t " : " rounded-lg border shadow "} 
                 ${className}
-                `}
+                `)}
         >
           {children}
-          <ChevronDownIcon className={`${open ? "rotate-180 transform" : ""} size-8 text-gray-700 ${classNameIcon}`} />
+          <ChevronDownIcon
+            className={stringTrim(`${open ? "rotate-180 transform" : ""} size-6 text-gray-700 ${classNameIcon}`)}
+          />
         </div>
       )}
     </Disclosure.Button>
@@ -46,7 +49,7 @@ export const Title = ({ children, className = "", classNameIcon = "" }: Accordio
 export const Body = ({ children, className = "" }: AccordionBodyProps) => {
   return (
     <Disclosure.Panel
-      className={`rounded-b-lg border-x border-b px-4 pb-2 pt-4 text-sm text-gray-500 shadow ${className}`}
+      className={stringTrim(`rounded-b-lg border-x border-b px-4 pb-2 pt-4 text-sm text-gray-500 shadow ${className}`)}
     >
       {children}
     </Disclosure.Panel>
