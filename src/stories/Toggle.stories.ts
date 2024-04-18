@@ -11,7 +11,7 @@ const meta: Meta = {
         type: 'inline-radio',
       },
     },
-    text: {
+    label: {
       control: 'text',
     },
   },
@@ -24,27 +24,27 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    text: 'Toggle',
+    label: 'Toggle',
   },
 };
 
 export const Blue: Story = {
   args: {
-    text: 'Blue',
+    label: 'Blue',
     color: 'blue',
   },
 };
 
 export const Red: Story = {
   args: {
-    text: 'Red',
+    label: 'Red',
     color: 'red',
   },
 };
 
 export const Yellow: Story = {
   args: {
-    text: 'Yellow',
+    label: 'Yellow',
     color: 'yellow',
   },
 };
