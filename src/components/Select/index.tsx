@@ -1,4 +1,5 @@
-import { Listbox, Transition } from "@headlessui/react";
+import {Listbox, Transition} from "@headlessui/react";
+import {CheckIcon} from "@heroicons/react/24/solid";
 
 export type Option = {
     id: string
@@ -53,14 +54,15 @@ const Select = ({
                 onChange={onChange}
                 multiple={multiple}
             >
-                {({ open }) => (
+                {({open}) => (
                     <div className="relative">
-              <span className="inline-block w-full rounded-md shadow-sm">
+              <span className="inline-block w-full rounded-md">
                 <Listbox.Button
                     className={`
-                    bg-transparent border text-gray-900 rounded-lg block w-full p-2.5 resize-none
-                focus:ring-blue-500 focus:border-blue-500
-                disabled:bg-gray-100 autofill:bg-transparent text-left ${classNameInput}`}
+                    bg-transparent border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 resize-none 
+                    focus:outline-none focus:ring-blue-500 focus:border-blue-500 
+                    disabled:bg-gray-100 autofill:bg-transparent text-left 
+                     ${classNameInput}`}
                 >
                   <span className="block truncate">
                     {(Array.isArray(value) ? `Selected: ${value.length || 0}` : selectedItem?.name) || placeholder}
@@ -82,7 +84,6 @@ const Select = ({
                   </span>
                 </Listbox.Button>
               </span>
-
                         <Transition
                             unmount={false}
                             show={open}
@@ -97,18 +98,18 @@ const Select = ({
                             >
                                 {options.map((item) => (
                                     <Listbox.Option key={item.id} value={item.id}>
-                                        {({ active, selected }) => (
+                                        {({active, selected}) => (
                                             <div
                                                 className={`${
                                                     active
                                                         ? 'text-white bg-blue-600'
                                                         : 'text-gray-900'
-                                                } cursor-default select-none relative py-2 pl-8 pr-4 ${classNameListOption}`}
+                                                } cursor-default select-none relative py-2 pl-10 pr-4 ${classNameListOption}`}
                                             >
                           <span
                               className={`${
                                   selected ? 'font-semibold' : 'font-normal'
-                              } block truncate`}
+                              } block truncate text-base`}
                           >
                             {item.name}
                           </span>
@@ -116,20 +117,9 @@ const Select = ({
                                                     <span
                                                         className={`${
                                                             active ? 'text-white' : 'text-blue-600'
-                                                        } absolute inset-y-0 left-0 flex items-center pl-1.5`}
+                                                        } absolute inset-y-0 left-0 flex items-center pl-3`}
                                                     >
-                              <svg
-                                  className="h-5 w-5"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                  fill="currentColor"
-                              >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clipRule="evenodd"
-                                />
-                              </svg>
+                              <CheckIcon className="h-5 w-5" aria-hidden="true" />
                             </span>
                                                 )}
                                             </div>

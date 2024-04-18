@@ -49,7 +49,7 @@ const AutocompleteSelect = forwardRef(({
   return (
     <div className={`w-full ${classNameWrapper}`}>
       {label && (
-        <p className={`block leading-5 mb-4 font-medium text-gray-700 ${classNameLabel}`}>
+        <p className={`block mb-2 text-sm  font-medium text-gray-900 ${classNameLabel}`}>
           {label}
         </p>
       )}
@@ -58,8 +58,8 @@ const AutocompleteSelect = forwardRef(({
           <div className="relative w-full cursor-default overflow-hidden">
             <Combobox.Input
               ref={ref}
-              className={`w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left
-                          focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+              className={`w-full border border-gray-300 rounded-lg bg-white pl-3 pr-10 py-2.5 text-left
+                          focus:outline-none focus:ring-blue-500 focus:border-blue-500
                           transition ease-in-out duration-150
                           disabled:bg-gray-100 disabled:text-gray-400
                           ${classNameInput}
@@ -84,7 +84,8 @@ const AutocompleteSelect = forwardRef(({
             leaveTo="opacity-0"
             afterLeave={() => setQuery('')}
           >
-            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1
+            text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
               {filteredOptionsArray.length === 0 && query !== '' ? (
                 <div className="relative cursor-default select-none px-4 py-2 text-gray-700">
                   Nothing found.
@@ -103,8 +104,8 @@ const AutocompleteSelect = forwardRef(({
                     {({ selected, active }) => (
                       <>
                             <span
-                              className={`block truncate ${
-                                selected ? 'font-medium' : 'font-normal'
+                              className={`block truncate text-base ${
+                                selected ? 'font-semibold' : 'font-normal'
                               }`}
                             >
                               {item.name}
@@ -112,7 +113,7 @@ const AutocompleteSelect = forwardRef(({
                         {selected ? (
                           <span
                             className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                              active ? 'text-white' : 'text-blue-500'
+                              active ? 'text-white' : 'text-blue-600'
                             }`}
                           >
                                 <CheckIcon className="h-5 w-5" aria-hidden="true" />

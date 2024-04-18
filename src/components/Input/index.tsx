@@ -42,9 +42,9 @@ export const Input = forwardRef(({
                 type={type}
                 {...rest}
                 className={`${error ? 'border-red-500' : 'border-gray-300'} 
-                bg-transparent border text-gray-900 rounded-lg block w-full p-2.5 resize-none
-                focus:ring-blue-500 focus:border-blue-500
-                disabled:bg-gray-100 autofill:bg-transparent 
+                bg-transparent border text-gray-900 rounded-lg block w-full p-2.5 resize-none 
+                focus:outline-none focus:ring-blue-500 focus:border-blue-500 
+                disabled:bg-gray-100 disabled:text-gray-400 autofill:bg-transparent 
                 ${multiline ? " min-h-28" : ""}
                 ${icon ? " ps-12" : ""}
                 ${inputClasses}`}
