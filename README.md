@@ -5,7 +5,7 @@ It is designed to provide basic UI elements for the Foundation projects.
 
 ## Installation
 
-You can install @mbicycle/foundation-ui-kit via npm or yarn:
+You can install (@mbicycle/foundation-ui-kit)[https://www.npmjs.com/package/@mbicycle/foundation-ui-kit] via npm or yarn:
 
 ```bash
 npm install @mbicycle/foundation-ui-kit
